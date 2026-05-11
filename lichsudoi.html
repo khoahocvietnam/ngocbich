@@ -337,6 +337,20 @@
             padding: 30px;
         }
 
+        .hero-portrait {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hero-portrait img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #2193B0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
         .timeline-mini {
             position: relative;
             padding-left: 30px;
@@ -514,6 +528,11 @@
 
             .header h1 {
                 font-size: 2rem;
+            }
+            
+            .hero-portrait img {
+                width: 130px;
+                height: 130px;
             }
         }
     </style>
@@ -1003,8 +1022,8 @@
                     modalName.textContent = 'Kim Đồng';
                     modalSubtitle.textContent = 'Nông Văn Dền (1929-1943)';
                     modalBody.innerHTML = `
-                        <div style="text-align: center; margin-bottom: 20px;">
-                            <i class="fas fa-user-circle" style="font-size: 100px; color: #2193B0;"></i>
+                        <div class="hero-portrait">
+                            <img src="images/kim-dong.jpg" alt="Kim Đồng" onerror="this.src='https://via.placeholder.com/180x180?text=Kim+Đồng'">
                         </div>
                         <p><strong>Tiểu sử:</strong> Kim Đồng tên thật là Nông Văn Dền, sinh năm 1929 tại thôn Nà Mạ, xã Trường Hà, huyện Hà Quảng, tỉnh Cao Bằng. Anh là người đội trưởng đầu tiên của Đội Nhi đồng Cứu quốc (tiền thân của Đội TNTP Hồ Chí Minh).</p>
                         
@@ -1042,8 +1061,8 @@
                     modalName.textContent = 'Lê Văn Tám';
                     modalSubtitle.textContent = '(1942-1947)';
                     modalBody.innerHTML = `
-                        <div style="text-align: center; margin-bottom: 20px;">
-                            <i class="fas fa-fire" style="font-size: 100px; color: #FF6B6B;"></i>
+                        <div class="hero-portrait">
+                            <img src="images/le-van-tam.jpg" alt="Lê Văn Tám" onerror="this.src='https://via.placeholder.com/180x180?text=Lê+Văn+Tám'">
                         </div>
                         <p><strong>Tiểu sử:</strong> Lê Văn Tám sinh năm 1942 tại Sài Gòn. Năm 1947, khi mới 12 tuổi, em đã thực hiện một hành động cảm tử: đốt kho xăng của giặc Pháp ở Thị Nghè, Sài Gòn.</p>
                         
@@ -1080,8 +1099,8 @@
                     modalName.textContent = 'Võ Thị Sáu';
                     modalSubtitle.textContent = '(1933-1952)';
                     modalBody.innerHTML = `
-                        <div style="text-align: center; margin-bottom: 20px;">
-                            <i class="fas fa-female" style="font-size: 100px; color: #FF6B9C;"></i>
+                        <div class="hero-portrait">
+                            <img src="images/vo-thi-sau.jpg" alt="Võ Thị Sáu" onerror="this.src='https://via.placeholder.com/180x180?text=Võ+Thị+Sáu'">
                         </div>
                         <p><strong>Tiểu sử:</strong> Võ Thị Sáu sinh năm 1933 tại xã Phước Long Thọ, huyện Đất Đỏ, tỉnh Bà Rịa (nay là tỉnh Bà Rịa - Vũng Tàu). Năm 14 tuổi, chị tham gia cách mạng làm liên lạc viên.</p>
                         
@@ -1123,8 +1142,8 @@
                     modalName.textContent = 'Nguyễn Bá Ngọc';
                     modalSubtitle.textContent = '(1953-1965)';
                     modalBody.innerHTML = `
-                        <div style="text-align: center; margin-bottom: 20px;">
-                            <i class="fas fa-child" style="font-size: 100px; color: #4CAF50;"></i>
+                        <div class="hero-portrait">
+                            <img src="images/nguyen-ba-ngoc.jpg" alt="Nguyễn Bá Ngọc" onerror="this.src='https://via.placeholder.com/180x180?text=Nguyễn+Bá+Ngọc'">
                         </div>
                         <p><strong>Tiểu sử:</strong> Nguyễn Bá Ngọc sinh năm 1953 tại xã Nam Hòa, huyện Yên Hưng, tỉnh Quảng Ninh (nay là TX Quảng Yên). Năm 1965, trong chiến tranh phá hoại của đế quốc Mỹ, em đã hy sinh khi cứu các em nhỏ.</p>
                         
@@ -1161,8 +1180,8 @@
                     modalName.textContent = 'Lý Tự Trọng';
                     modalSubtitle.textContent = '(1914-1931)';
                     modalBody.innerHTML = `
-                        <div style="text-align: center; margin-bottom: 20px;">
-                            <i class="fas fa-gavel" style="font-size: 100px; color: #6DD5ED;"></i>
+                        <div class="hero-portrait">
+                            <img src="images/ly-tu-trong.jpg" alt="Lý Tự Trọng" onerror="this.src='https://via.placeholder.com/180x180?text=Lý+Tự+Trọng'">
                         </div>
                         <p><strong>Tiểu sử:</strong> Lý Tự Trọng tên thật là Lê Hữu Trọng, sinh năm 1914 tại huyện Thạch Hà, tỉnh Hà Tĩnh. Năm 14 tuổi, anh được cử đi học tại Quảng Châu (Trung Quốc) và tham gia cách mạng.</p>
                         
@@ -1203,8 +1222,8 @@
                     modalName.textContent = 'Nguyễn Văn Trỗi';
                     modalSubtitle.textContent = '(1940-1964)';
                     modalBody.innerHTML = `
-                        <div style="text-align: center; margin-bottom: 20px;">
-                            <i class="fas fa-bomb" style="font-size: 100px; color: #E74C3C;"></i>
+                        <div class="hero-portrait">
+                            <img src="images/nguyen-van-troi.jpg" alt="Nguyễn Văn Trỗi" onerror="this.src='https://via.placeholder.com/180x180?text=Nguyễn+Văn+Trỗi'">
                         </div>
                         <p><strong>Tiểu sử:</strong> Nguyễn Văn Trỗi sinh năm 1940 tại xã Thanh Quýt, huyện Điện Bàn, tỉnh Quảng Nam. Anh tham gia cách mạng và là chiến sĩ biệt động Sài Gòn.</p>
                         
