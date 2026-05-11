@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử Đội TNTP Hồ Chí Minh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6DD5ED, #2193B0);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 30px;
+            background: white;
+            color: #2193B0;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            background: white;
+            color: #2193B0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-weight: 600;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #6DD5ED, #2193B0);
+            color: white;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #6DD5ED, #2193B0);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 30px);
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 30px);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2193B0;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #2193B0;
+            z-index: 2;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 20px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 20px;
+        }
+
+        .timeline-content h3 {
+            color: #2193B0;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content h4 {
+            color: #333;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .timeline-content img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Heroes Section */
+        .heroes-section {
+            margin-top: 60px;
+        }
+
+        .heroes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .hero-image {
+            height: 200px;
+            background: linear-gradient(135deg, #6DD5ED, #2193B0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4em;
+        }
+
+        .hero-info {
+            padding: 20px;
+        }
+
+        .hero-info h3 {
+            color: #2193B0;
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .hero-info .title {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .hero-info p {
+            color: #555;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+            margin: 20px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #6DD5ED, #2193B0);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px 15px 0 0;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .modal-header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1.2em;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .timeline-mini {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+
+        .timeline-mini::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #2193B0;
+        }
+
+        .timeline-mini-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .timeline-mini-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #2193B0;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px #2193B0;
+        }
+
+        .timeline-mini-date {
+            font-weight: 700;
+            color: #2193B0;
+            margin-bottom: 5px;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: linear-gradient(135deg, #FFC107, #FF8F00);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.9em;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Stories Section */
+        .stories-section {
+            margin-top: 60px;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .story-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .story-image {
+            height: 200px;
+            background: linear-gradient(135deg, #6DD5ED, #2193B0);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-image i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4em;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .story-content {
+            padding: 25px;
+        }
+
+        .story-content h3 {
+            color: #2193B0;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .story-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .story-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #666;
+            font-size: 0.9em;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .story-meta i {
+            color: #2193B0;
+            margin-right: 5px;
+        }
+
+        .read-more {
+            color: #2193B0;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding: 0 0 0 50px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin: 0;
+            }
+
+            .tab-container {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+
+            .heroes-grid,
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>LỊCH SỬ ĐỘI TNTP HỒ CHÍ MINH</h1>
+            <p>85 năm xây dựng và trưởng thành (1941 - 2026)</p>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Về trang chủ</a>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="showTab('timeline')">
+                <i class="fas fa-history"></i> Dòng lịch sử
+            </button>
+            <button class="tab-btn" onclick="showTab('heroes')">
+                <i class="fas fa-star"></i> Anh hùng Đội viên
+            </button>
+            <button class="tab-btn" onclick="showTab('stories')">
+                <i class="fas fa-book-open"></i> Câu chuyện Đội ta
+            </button>
+        </div>
+
+        <!-- Timeline Tab -->
+        <div id="timeline-tab" class="tab-content active">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>15/05/1941</h3>
+                        <h4>Thành lập Đội Nhi đồng Cứu quốc</h4>
+                        <p>Đội được thành lập tại thôn Nà Mạ, xã Trường Hà, huyện Hà Quảng, tỉnh Cao Bằng. Gồm 5 đội viên đầu tiên: Kim Đồng, Cao Sơn, Thanh Minh, Thủy Tiên, Thanh Thủy.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>15/02/1943</h3>
+                        <h4>Anh hùng Kim Đồng hy sinh</h4>
+                        <p>Người đội trưởng đầu tiên của Đội đã anh dũng hy sinh khi làm nhiệm vụ bảo vệ cán bộ cách mạng, trở thành tấm gương sáng cho các thế hệ thiếu nhi.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1945</h3>
+                        <h4>Cách mạng Tháng Tám thành công</h4>
+                        <p>Đội tham gia bảo vệ chính quyền cách mạng, làm nhiệm vụ liên lạc, canh gác. Nhiều đội viên trở thành chiến sĩ trong các đội vũ trang.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1947</h3>
+                        <h4>Phong trào "Trần Quốc Toản"</h4>
+                        <p>Phong trào thi đua yêu nước đầu tiên của thiếu nhi, lấy tên người anh hùng nhỏ tuổi Trần Quốc Toản.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>15/10/1947</h3>
+                        <h4>Anh hùng Lê Văn Tám hy sinh</h4>
+                        <p>Đã anh dũng hy sinh khi đốt kho xăng của giặc Pháp ở Thị Nghè, Sài Gòn.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1951</h3>
+                        <h4>Đổi tên thành Đội Thiếu nhi Tháng Tám</h4>
+                        <p>Sau Cách mạng Tháng Tám, Đội được đổi tên thành Đội Thiếu nhi Tháng Tám, hoạt động mạnh mẽ trong thời kỳ kháng chiến chống Pháp.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>23/01/1952</h3>
+                        <h4>Chị Võ Thị Sáu hy sinh</h4>
+                        <p>Nữ anh hùng liệt sĩ trẻ tuổi đã anh dũng hy sinh tại Côn Đảo khi mới 19 tuổi.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1956</h3>
+                        <h4>Đổi tên thành Đội Thiếu niên Tiền phong</h4>
+                        <p>Đội được mang tên Đội Thiếu niên Tiền phong, thể hiện vai trò tiên phong của thiếu niên trong công cuộc xây dựng và bảo vệ Tổ quốc.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1964</h3>
+                        <h4>Phong trào "Nghìn việc tốt" khởi nguồn</h4>
+                        <p>Phong trào bắt đầu từ liên đội Tam Sơn, Hà Bắc (nay là Bắc Ninh) và lan rộng toàn quốc.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>15/10/1964</h3>
+                        <h4>Anh Nguyễn Văn Trỗi hy sinh</h4>
+                        <p>Anh hùng lực lượng vũ trang nhân dân, tấm gương sáng cho thế hệ trẻ Việt Nam.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1965</h3>
+                        <h4>Anh hùng Nguyễn Bá Ngọc hy sinh</h4>
+                        <p>Đã hy sinh khi cứu các em nhỏ trong chiến tranh phá hoại của đế quốc Mỹ.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>30/01/1970</h3>
+                        <h4>Đội được mang tên Bác Hồ</h4>
+                        <p>Đội được vinh dự mang tên Đội Thiếu niên Tiền phong Hồ Chí Minh, ghi nhận công lao to lớn của Bác Hồ đối với thế hệ trẻ Việt Nam.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1976</h3>
+                        <h4>Phong trào "Kế hoạch nhỏ" ra đời</h4>
+                        <p>Phong trào khuyến khích thiếu nhi tiết kiệm, giúp đỡ bạn nghèo và xây dựng công trình măng non.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1986</h3>
+                        <h4>Phong trào "Vượt khó học tốt"</h4>
+                        <p>Phong trào động viên các bạn học sinh có hoàn cảnh khó khăn vươn lên trong học tập.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>1995</h3>
+                        <h4>Phong trào "Nuôi heo đất"</h4>
+                        <p>Phong trào tiết kiệm giúp bạn nghèo vui Tết, được phát động rộng rãi trong các liên đội.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2001</h3>
+                        <h4>Cuộc vận động "Vòng tay bè bạn"</h4>
+                        <p>Cuộc vận động giúp đỡ thiếu nhi có hoàn cảnh khó khăn, thể hiện tinh thần tương thân tương ái.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2011</h3>
+                        <h4>Kỷ niệm 70 năm thành lập Đội</h4>
+                        <p>Kỷ niệm 70 năm ngày thành lập Đội với nhiều hoạt động ý nghĩa, tôn vinh truyền thống vẻ vang.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>2021</h3>
+                        <h4>Kỷ niệm 80 năm thành lập Đội</h4>
+                        <p>Kỷ niệm 80 năm ngày thành lập Đội TNTP Hồ Chí Minh, đánh dấu chặng đường 80 năm xây dựng và trưởng thành.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Heroes Tab -->
+        <div id="heroes-tab" class="tab-content">
+            <h2 class="section-title">ANH HÙNG ĐỘI VIÊN TIÊU BIỂU</h2>
+            <div class="heroes-grid">
+                <!-- Kim Đồng -->
+                <div class="hero-card" onclick="showHeroProfile('kimdong')">
+                    <div class="hero-image">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="hero-info">
+                        <h3>Kim Đồng</h3>
+                        <p class="title">Nông Văn Dền (1929-1943)</p>
+                        <p>Đội trưởng đầu tiên của Đội TNTP Hồ Chí Minh, hy sinh khi làm nhiệm vụ bảo vệ cán bộ cách mạng.</p>
+                    </div>
+                </div>
+
+                <!-- Lê Văn Tám -->
+                <div class="hero-card" onclick="showHeroProfile('levantam')">
+                    <div class="hero-image">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="hero-info">
+                        <h3>Lê Văn Tám</h3>
+                        <p class="title">(1942-1947)</p>
+                        <p>Dũng sĩ diệt kho xăng Thị Nghè, tấm gương hy sinh anh dũng vì cách mạng.</p>
+                    </div>
+                </div>
+
+                <!-- Võ Thị Sáu -->
+                <div class="hero-card" onclick="showHeroProfile('vothisau')">
+                    <div class="hero-image">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <div class="hero-info">
+                        <h3>Võ Thị Sáu</h3>
+                        <p class="title">(1933-1952)</p>
+                        <p>Nữ anh hùng liệt sĩ, người con gái Đất Đỏ kiên trung bất khuất.</p>
+                    </div>
+                </div>
+
+                <!-- Nguyễn Bá Ngọc -->
+                <div class="hero-card" onclick="showHeroProfile('nguyenbangoc')">
+                    <div class="hero-image">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <div class="hero-info">
+                        <h3>Nguyễn Bá Ngọc</h3>
+                        <p class="title">(1953-1965)</p>
+                        <p>Hy sinh cứu các bạn nhỏ trong chiến tranh phá hoại của đế quốc Mỹ.</p>
+                    </div>
+                </div>
+
+                <!-- Lý Tự Trọng -->
+                <div class="hero-card" onclick="showHeroProfile('lytutrong')">
+                    <div class="hero-image">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <div class="hero-info">
+                        <h3>Lý Tự Trọng</h3>
+                        <p class="title">(1914-1931)</p>
+                        <p>"Con đường của thanh niên chỉ là con đường cách mạng" - Câu nói nổi tiếng trước tòa án địch.</p>
+                    </div>
+                </div>
+
+                <!-- Nguyễn Văn Trỗi -->
+                <div class="hero-card" onclick="showHeroProfile('nguyenvantroi')">
+                    <div class="hero-image">
+                        <i class="fas fa-bomb"></i>
+                    </div>
+                    <div class="hero-info">
+                        <h3>Nguyễn Văn Trỗi</h3>
+                        <p class="title">(1940-1964)</p>
+                        <p>Anh hùng lực lượng vũ trang nhân dân, tấm gương chiến đấu kiên cường.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stories Tab -->
+        <div id="stories-tab" class="tab-content">
+            <h2 class="section-title">CÂU CHUYỆN VỀ ĐỘI TA</h2>
+            <div class="stories-grid">
+                <!-- Câu chuyện 1 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Buổi thành lập Đội tại núi rừng Cao Bằng</h3>
+                        <p>Ngày 15/5/1941, trong khu rừng già ở thôn Nà Mạ, xã Trường Hà, huyện Hà Quảng, tỉnh Cao Bằng, dưới sự chủ trì của đồng chí Đức Thanh, Đội Nhi đồng Cứu quốc chính thức được thành lập với 5 đội viên đầu tiên...</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-calendar"></i> 15/05/1941</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Cao Bằng</span>
+                        </div>
+                        <a class="read-more" onclick="showStory(1)">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Câu chuyện 2 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Chuyện về 5 đội viên đầu tiên</h3>
+                        <p>Kim Đồng (Nông Văn Dền) 12 tuổi, Cao Sơn (Nông Văn Thàn) 10 tuổi, Thanh Minh (Lý Văn Tịnh) 10 tuổi, Thủy Tiên (Lý Thị Nì) 9 tuổi và Thanh Thủy (Lý Thị Xậu) 8 tuổi - Những đội viên đầu tiên của Đội đã vượt qua nhiều khó khăn, nguy hiểm để làm nhiệm vụ liên lạc, bảo vệ cán bộ...</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-calendar"></i> 1941-1943</span>
+                            <span><i class="fas fa-users"></i> 5 đội viên</span>
+                        </div>
+                        <a class="read-more" onclick="showStory(2)">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Câu chuyện 3 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Kim Đồng - Người đội trưởng huyền thoại</h3>
+                        <p>Trong một lần đi liên lạc, Kim Đồng phát hiện địch phục kích, anh đã đánh lạc hướng để các cán bộ rút lui an toàn và hy sinh ngay tại suối Lê Nin khi mới 14 tuổi...</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-calendar"></i> 15/02/1943</span>
+                            <span><i class="fas fa-star"></i> Anh hùng liệt sĩ</span>
+                        </div>
+                        <a class="read-more" onclick="showStory(3)">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Câu chuyện 4 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Lê Văn Tám và kho xăng Thị Nghè</h3>
+                        <p>Năm 1947, tại Sài Gòn, cậu bé 12 tuổi Lê Văn Tám đã nhận nhiệm vụ cảm tử: đốt kho xăng của giặc Pháp ở Thị Nghè. Mang xăng dầu tẩm vào người, cậu đã anh dũng hy sinh khi kho xăng phát nổ...</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-calendar"></i> 15/10/1947</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Sài Gòn</span>
+                        </div>
+                        <a class="read-more" onclick="showStory(4)">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Câu chuyện 5 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Võ Thị Sáu trước tòa án địch</h3>
+                        <p>Trước tòa án của thực dân Pháp, chị Võ Thị Sáu hiên ngang vạch mặt tội ác của giặc và khẳng định: "Yêu nước chống Pháp không phải là tội!" Tiếng hô "Việt Nam độc lập muôn năm" của chị làm rúng động phiên tòa...</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-calendar"></i> 1952</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Côn Đảo</span>
+                        </div>
+                        <a class="read-more" onclick="showStory(5)">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Câu chuyện 6 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Nguyễn Bá Ngọc - Tấm gương hy sinh cứu bạn</h3>
+                        <p>Trong trận bom của đế quốc Mỹ, cậu bé 12 tuổi Nguyễn Bá Ngọc đã lao ra che chắn, cứu hai em nhỏ và hy sinh. Câu chuyện về tấm gương dũng cảm của em đã lay động hàng triệu trái tim...</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-calendar"></i> 1965</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Quảng Ninh</span>
+                        </div>
+                        <a class="read-more" onclick="showStory(6)">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Câu chuyện 7 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Lý Tự Trọng - Câu nói bất hủ</h3>
+                        <p>Trước tòa án địch, Lý Tự Trọng đã nói câu nói nổi tiếng: "Con đường của thanh niên chỉ là con đường cách mạng, không thể có con đường nào khác" - trở thành kim chỉ nam cho các thế hệ thanh niên Việt Nam.</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-calendar"></i> 1931</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Sài Gòn</span>
+                        </div>
+                        <a class="read-more" onclick="showStory(7)">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Câu chuyện 8 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Phong trào Kế hoạch nhỏ</h3>
+                        <p>Bắt đầu từ năm 1976, phong trào "Kế hoạch nhỏ" đã trở thành một hoạt động truyền thống của Đội. Hàng triệu đội viên đã thu gom giấy vụn, nuôi heo đất gây quỹ xây dựng nhà máy nhựa Tiền Phong, tặng quà cho bạn nghèo...</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-calendar"></i> 1976</span>
+                            <span><i class="fas fa-globe"></i> Toàn quốc</span>
+                        </div>
+                        <a class="read-more" onclick="showStory(8)">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Câu chuyện 9 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Phong trào Nghìn việc tốt</h3>
+                        <p>Năm 1964, phong trào "Nghìn việc tốt" ra đời từ Liên đội Tam Sơn, Hà Bắc (nay là Bắc Ninh) với tấm gương của em Nguyễn Thị Thủy. Phong trào nhanh chóng lan rộng toàn quốc, trở thành một trong những hoạt động tiêu biểu nhất của Đội.</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-calendar"></i> 1964</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Bắc Ninh</span>
+                        </div>
+                        <a class="read-more" onclick="showStory(9)">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Câu chuyện 10 -->
+                <div class="story-card">
+                    <div class="story-image">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="story-content">
+                        <h3>Đội ta lớn lên cùng đất nước</h3>
+                        <p>Từ 5 đội viên đầu tiên, đến nay Đội TNTP Hồ Chí Minh đã có hàng chục triệu đội viên, trở thành lực lượng giáo dục thiếu nhi hùng hậu, đào tạo nhiều thế hệ công dân tốt cho đất nước, tiếp bước truyền thống vẻ vang của cha anh.</p>
+                        <div class="story-meta">
+                            <span><i class="fas fa-calendar"></i> 1941-2025</span>
+                            <span><i class="fas fa-users"></i> Hàng triệu đội viên</span>
+                        </div>
+                        <a class="read-more" onclick="showStory(10)">Đọc thêm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Hero Profile -->
+        <div id="heroModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalHeroName">Kim Đồng</h2>
+                    <div class="subtitle" id="modalHeroSubtitle">Nông Văn Dền (1929-1943)</div>
+                    <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Content will be filled by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 - Lịch sử Đội TNTP Hồ Chí Minh</p>
+            <p>Phát triển bởi Ban Giáo dục Đội</p>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+
+        // Modal functions
+        function showHeroProfile(heroId) {
+            const modal = document.getElementById('heroModal');
+            const modalName = document.getElementById('modalHeroName');
+            const modalSubtitle = document.getElementById('modalHeroSubtitle');
+            const modalBody = document.getElementById('modalBody');
+            
+            // Set content based on hero
+            switch(heroId) {
+                case 'kimdong':
+                    modalName.textContent = 'Kim Đồng';
+                    modalSubtitle.textContent = 'Nông Văn Dền (1929-1943)';
+                    modalBody.innerHTML = `
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <i class="fas fa-user-circle" style="font-size: 100px; color: #2193B0;"></i>
+                        </div>
+                        <p><strong>Tiểu sử:</strong> Kim Đồng tên thật là Nông Văn Dền, sinh năm 1929 tại thôn Nà Mạ, xã Trường Hà, huyện Hà Quảng, tỉnh Cao Bằng. Anh là người đội trưởng đầu tiên của Đội Nhi đồng Cứu quốc (tiền thân của Đội TNTP Hồ Chí Minh).</p>
+                        
+                        <div class="timeline-mini">
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1929</div>
+                                <div>Sinh ra tại Cao Bằng trong một gia đình cách mạng.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1941</div>
+                                <div>Trở thành đội trưởng đầu tiên của Đội Nhi đồng Cứu quốc.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">15/02/1943</div>
+                                <div>Hy sinh tại suối Lê Nin khi làm nhiệm vụ bảo vệ cán bộ cách mạng.</div>
+                            </div>
+                        </div>
+                        
+                        <h4>Thành tích & Ghi nhận:</h4>
+                        <p>
+                            <span class="achievement-badge">Anh hùng LLVT</span>
+                            <span class="achievement-badge">Huân chương Hồ Chí Minh</span>
+                            <span class="achievement-badge">Đội trưởng đầu tiên</span>
+                        </p>
+                        
+                        <h4>Câu chuyện:</h4>
+                        <p>Trong một lần đi liên lạc, Kim Đồng phát hiện địch phục kích gần nơi cán bộ đang họp. Anh nhanh trí đánh lạc hướng địch, tạo điều kiện cho các đồng chí cán bộ rút lui an toàn và đã anh dũng hy sinh khi mới 14 tuổi.</p>
+                        
+                        <h4>Câu nói nổi tiếng:</h4>
+                        <p style="font-style: italic; background: #f0f9ff; padding: 15px; border-radius: 8px;">"Nếu các anh bảo vệ được cán bộ, thì dù có hy sinh, nhân dân và Đảng sẽ đời đời nhớ ơn."</p>
+                    `;
+                    break;
+                    
+                case 'levantam':
+                    modalName.textContent = 'Lê Văn Tám';
+                    modalSubtitle.textContent = '(1942-1947)';
+                    modalBody.innerHTML = `
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <i class="fas fa-fire" style="font-size: 100px; color: #FF6B6B;"></i>
+                        </div>
+                        <p><strong>Tiểu sử:</strong> Lê Văn Tám sinh năm 1942 tại Sài Gòn. Năm 1947, khi mới 12 tuổi, em đã thực hiện một hành động cảm tử: đốt kho xăng của giặc Pháp ở Thị Nghè, Sài Gòn.</p>
+                        
+                        <div class="timeline-mini">
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1942</div>
+                                <div>Sinh ra tại Sài Gòn.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1947</div>
+                                <div>Tham gia cách mạng, làm liên lạc viên.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">15/10/1947</div>
+                                <div>Hy sinh khi thực hiện nhiệm vụ đốt kho xăng Thị Nghè.</div>
+                            </div>
+                        </div>
+                        
+                        <h4>Thành tích & Ghi nhận:</h4>
+                        <p>
+                            <span class="achievement-badge">Anh hùng LLVT</span>
+                            <span class="achievement-badge">Dũng sĩ diệt kho</span>
+                        </p>
+                        
+                        <h4>Câu chuyện:</h4>
+                        <p>Trong kháng chiến chống Pháp, kho xăng Thị Nghè là mục tiêu quan trọng. Lê Văn Tám đã xung phong nhận nhiệm vụ cảm tử. Em tẩm xăng dầu vào người, giả làm người bán rau vào gần kho xăng và châm lửa. Sự hy sinh của em đã góp phần làm suy yếu hậu cần của giặc.</p>
+                        
+                        <h4>Di sản:</h4>
+                        <p>Tên em được đặt cho nhiều trường học, đường phố trên cả nước. Tấm gương hy sinh anh dũng của em là biểu tượng của lòng yêu nước và tinh thần bất khuất của thiếu nhi Việt Nam.</p>
+                    `;
+                    break;
+                    
+                case 'vothisau':
+                    modalName.textContent = 'Võ Thị Sáu';
+                    modalSubtitle.textContent = '(1933-1952)';
+                    modalBody.innerHTML = `
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <i class="fas fa-female" style="font-size: 100px; color: #FF6B9C;"></i>
+                        </div>
+                        <p><strong>Tiểu sử:</strong> Võ Thị Sáu sinh năm 1933 tại xã Phước Long Thọ, huyện Đất Đỏ, tỉnh Bà Rịa (nay là tỉnh Bà Rịa - Vũng Tàu). Năm 14 tuổi, chị tham gia cách mạng làm liên lạc viên.</p>
+                        
+                        <div class="timeline-mini">
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1933</div>
+                                <div>Sinh ra tại Đất Đỏ, Bà Rịa.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1948</div>
+                                <div>Tham gia cách mạng, làm liên lạc viên.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1950</div>
+                                <div>Bị địch bắt sau khi ném lựu đạn tiêu diệt ác ôn.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">23/01/1952</div>
+                                <div>Hy sinh tại Côn Đảo khi mới 19 tuổi.</div>
+                            </div>
+                        </div>
+                        
+                        <h4>Thành tích & Ghi nhận:</h4>
+                        <p>
+                            <span class="achievement-badge">Anh hùng LLVT</span>
+                            <span class="achievement-badge">Huân chương Hồ Chí Minh</span>
+                            <span class="achievement-badge">Nữ anh hùng trẻ tuổi</span>
+                        </p>
+                        
+                        <h4>Câu chuyện:</h4>
+                        <p>Trước tòa án của thực dân Pháp, chị Võ Thị Sáu hiên ngang khẳng định: "Yêu nước chống Pháp không phải là tội!" Câu nói và thái độ bất khuất của chị làm rúng động cả phiên tòa. Trước pháp trường, chị vẫn hiên ngang hát vang bài Quốc tế ca và hô to "Việt Nam độc lập muôn năm!"</p>
+                        
+                        <h4>Di sản:</h4>
+                        <p>Chị là nữ anh hùng trẻ tuổi nhất trong lịch sử kháng chiến chống Pháp. Tên chị được đặt cho nhiều trường học, đường phố và trở thành biểu tượng của tinh thần bất khuất, kiên trung của phụ nữ Việt Nam.</p>
+                    `;
+                    break;
+                    
+                case 'nguyenbangoc':
+                    modalName.textContent = 'Nguyễn Bá Ngọc';
+                    modalSubtitle.textContent = '(1953-1965)';
+                    modalBody.innerHTML = `
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <i class="fas fa-child" style="font-size: 100px; color: #4CAF50;"></i>
+                        </div>
+                        <p><strong>Tiểu sử:</strong> Nguyễn Bá Ngọc sinh năm 1953 tại xã Nam Hòa, huyện Yên Hưng, tỉnh Quảng Ninh (nay là TX Quảng Yên). Năm 1965, trong chiến tranh phá hoại của đế quốc Mỹ, em đã hy sinh khi cứu các em nhỏ.</p>
+                        
+                        <div class="timeline-mini">
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1953</div>
+                                <div>Sinh ra tại Quảng Ninh.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1965</div>
+                                <div>Đang học lớp 6, tích cực tham gia phong trào thiếu nhi.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1965</div>
+                                <div>Hy sinh khi cứu các em nhỏ trong trận bom Mỹ.</div>
+                            </div>
+                        </div>
+                        
+                        <h4>Thành tích & Ghi nhận:</h4>
+                        <p>
+                            <span class="achievement-badge">Anh hùng LLVT</span>
+                            <span class="achievement-badge">Tấm gương dũng cảm</span>
+                        </p>
+                        
+                        <h4>Câu chuyện:</h4>
+                        <p>Trong một trận bom của đế quốc Mỹ, thấy các em nhỏ đang chơi gần đó sắp bị bom, Nguyễn Bá Ngọc đã lao ra che chắn, dùng thân mình bảo vệ các em. Em đã hy sinh nhưng cứu được hai em nhỏ. Hành động dũng cảm của em đã lay động hàng triệu trái tim Việt Nam.</p>
+                        
+                        <h4>Di sản:</h4>
+                        <p>Bức thư Bác Hồ gửi em Nguyễn Bá Ngọc trước lúc hy sinh là nguồn động viên lớn lao: "Cháu Nguyễn Bá Ngọc yêu quý! Cháu là một tấm gương sáng về lòng dũng cảm và tinh thần hy sinh vì mọi người".</p>
+                    `;
+                    break;
+                    
+                case 'lytutrong':
+                    modalName.textContent = 'Lý Tự Trọng';
+                    modalSubtitle.textContent = '(1914-1931)';
+                    modalBody.innerHTML = `
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <i class="fas fa-gavel" style="font-size: 100px; color: #6DD5ED;"></i>
+                        </div>
+                        <p><strong>Tiểu sử:</strong> Lý Tự Trọng tên thật là Lê Hữu Trọng, sinh năm 1914 tại huyện Thạch Hà, tỉnh Hà Tĩnh. Năm 14 tuổi, anh được cử đi học tại Quảng Châu (Trung Quốc) và tham gia cách mạng.</p>
+                        
+                        <div class="timeline-mini">
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1914</div>
+                                <div>Sinh ra tại Hà Tĩnh.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1928</div>
+                                <div>Được kết nạp vào tổ chức Việt Nam Thanh niên Cách mạng Đồng chí Hội.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1931</div>
+                                <div>Bị địch bắt sau khi bắn chết mật thám Legrand.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">20/11/1931</div>
+                                <div>Hy sinh tại Sài Gòn khi mới 17 tuổi.</div>
+                            </div>
+                        </div>
+                        
+                        <h4>Thành tích & Ghi nhận:</h4>
+                        <p>
+                            <span class="achievement-badge">Anh hùng LLVT</span>
+                            <span class="achievement-badge">Chiến sĩ cộng sản</span>
+                        </p>
+                        
+                        <h4>Câu nói nổi tiếng:</h4>
+                        <p style="font-style: italic; background: #f0f9ff; padding: 15px; border-radius: 8px;">"Con đường của thanh niên chỉ là con đường cách mạng, không thể có con đường nào khác."</p>
+                        
+                        <h4>Câu chuyện:</h4>
+                        <p>Trước tòa án của thực dân Pháp, Lý Tự Trọng đã biến phiên tòa thành nơi tố cáo tội ác của giặc. Câu nói bất hủ của anh đã trở thành kim chỉ nam cho các thế hệ thanh niên Việt Nam, thể hiện lý tưởng sống cao đẹp, kiên trung với cách mạng.</p>
+                    `;
+                    break;
+                    
+                case 'nguyenvantroi':
+                    modalName.textContent = 'Nguyễn Văn Trỗi';
+                    modalSubtitle.textContent = '(1940-1964)';
+                    modalBody.innerHTML = `
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <i class="fas fa-bomb" style="font-size: 100px; color: #E74C3C;"></i>
+                        </div>
+                        <p><strong>Tiểu sử:</strong> Nguyễn Văn Trỗi sinh năm 1940 tại xã Thanh Quýt, huyện Điện Bàn, tỉnh Quảng Nam. Anh tham gia cách mạng và là chiến sĩ biệt động Sài Gòn.</p>
+                        
+                        <div class="timeline-mini">
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1940</div>
+                                <div>Sinh ra tại Quảng Nam.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">1964</div>
+                                <div>Tham gia Biệt động Sài Gòn, nhận nhiệm vụ đánh bom Bộ trưởng Quốc phòng Mỹ McNamara.</div>
+                            </div>
+                            <div class="timeline-mini-item">
+                                <div class="timeline-mini-date">15/10/1964</div>
+                                <div>Hy sinh tại Sài Gòn.</div>
+                            </div>
+                        </div>
+                        
+                        <h4>Thành tích & Ghi nhận:</h4>
+                        <p>
+                            <span class="achievement-badge">Anh hùng LLVT</span>
+                            <span class="achievement-badge">Huân chương Hồ Chí Minh</span>
+                        </p>
+                        
+                        <h4>Câu nói nổi tiếng:</h4>
+                        <p style="font-style: italic; background: #f0f9ff; padding: 15px; border-radius: 8px;">"Tôi không có gì phải hối tiếc, chỉ tiếc là không còn được sống để chiến đấu thêm vài năm nữa. Nhưng tôi tin rằng đồng bào và đồng chí tôi sẽ tiếp tục sự nghiệp cao quý này."</p>
+                        
+                        <h4>Câu chuyện:</h4>
+                        <p>Trước khi hy sinh, Nguyễn Văn Trỗi đã viết những dòng thư cuối cùng gửi mẹ và vợ, thể hiện tinh thần lạc quan cách mạng và lòng yêu nước sâu sắc. Hình ảnh anh hiên ngang trước pháp trường đã trở thành biểu tượng của chủ nghĩa anh hùng cách mạng Việt Nam.</p>
+                    `;
+                    break;
+            }
+            
+            modal.classList.add('active');
+        }
+
+        function showStory(storyId) {
+            const modal = document.getElementById('heroModal');
+            const modalName = document.getElementById('modalHeroName');
+            const modalSubtitle = document.getElementById('modalHeroSubtitle');
+            const modalBody = document.getElementById('modalBody');
+            
+            modalName.textContent = 'Câu chuyện về Đội ta';
+            modalSubtitle.textContent = '';
+            
+            const stories = {
+                1: {
+                    title: 'Buổi thành lập Đội tại núi rừng Cao Bằng',
+                    content: `
+                        <h4>Ngày 15/5/1941 - Một ngày lịch sử</h4>
+                        <p>Trong khu rừng già thuộc thôn Nà Mạ, xã Trường Hà, huyện Hà Quảng, tỉnh Cao Bằng, một sự kiện lịch sử trọng đại đã diễn ra: Đội Nhi đồng Cứu quốc - tiền thân của Đội TNTP Hồ Chí Minh được thành lập.</p>
+                        
+                        <p>Dưới sự chủ trì của đồng chí Đức Thanh, buổi lễ diễn ra trong không khí trang nghiêm nhưng đầy xúc động. 5 đội viên đầu tiên đã đứng nghiêm trang trước lá cờ đỏ sao vàng:</p>
+                        
+                        <ul>
+                            <li><strong>Kim Đồng</strong> (Nông Văn Dền) - 12 tuổi</li>
+                            <li><strong>Cao Sơn</strong> (Nông Văn Thàn) - 10 tuổi</li>
+                            <li><strong>Thanh Minh</strong> (Lý Văn Tịnh) - 10 tuổi</li>
+                            <li><strong>Thủy Tiên</strong> (Lý Thị Nì) - 9 tuổi</li>
+                            <li><strong>Thanh Thủy</strong> (Lý Thị Xậu) - 8 tuổi</li>
+                        </ul>
+                        
+                        <p>Mặc dù còn rất nhỏ tuổi, nhưng các em đã ý thức sâu sắc về nhiệm vụ cao cả của mình: làm liên lạc, bảo vệ cán bộ, tham gia các hoạt động kháng chiến. Sự ra đời của Đội đánh dấu bước trưởng thành của phong trào thiếu nhi cách mạng Việt Nam.</p>
+                        
+                        <p>Sau lễ thành lập, các đội viên được trang bị những kỹ năng cơ bản: cách đi rừng, vượt suối, cách phát hiện địch, cách chuyển thư mật... Những bài học đầu tiên đó đã theo suốt cuộc đời hoạt động cách mạng của các em.</p>
+                    `
+                },
+                2: {
+                    title: 'Chuyện về 5 đội viên đầu tiên',
+                    content: `
+                        <h4>Những mầm non cách mạng</h4>
+                        <p>Kim Đồng, Cao Sơn, Thanh Minh, Thủy Tiên và Thanh Thủy - năm cái tên đã đi vào lịch sử Đội TNTP Hồ Chí Minh. Họ không chỉ là những đội viên đầu tiên mà còn là những tấm gương sáng về lòng dũng cảm, sự mưu trí và tinh thần hy sinh vì cách mạng.</p>
+                        
+                        <h4>Kim Đồng (Nông Văn Dền) - 12 tuổi</h4>
+                        <p>Là đội trưởng, Kim Đồng tỏ ra chững chạc hơn tuổi. Em thường xuyên được giao những nhiệm vụ quan trọng: chuyển thư mật, dẫn đường cho cán bộ qua rừng, phát hiện địch phục kích. Nhiều lần em đã đưa cán bộ thoát khỏi vòng vây của địch nhờ sự nhanh trí và hiểu biết địa hình.</p>
+                        
+                        <h4>Cao Sơn (Nông Văn Thàn) - 10 tuổi</h4>
+                        <p>Là em ruột của Kim Đồng, Cao Sơn cũng nhanh nhẹn và mưu trí không kém anh. Em thường cùng anh trai đi liên lạc và học được nhiều kinh nghiệm quý báu.</p>
+                        
+                        <h4>Thanh Minh (Lý Văn Tịnh) - 10 tuổi</h4>
+                        <p>Là người dân tộc Nùng, Thanh Minh thông thạo đường rừng và có khả năng bắt chước tiếng chim thú để làm tín hiệu liên lạc.</p>
+                        
+                        <h4>Thủy Tiên (Lý Thị Nì) - 9 tuổi</h4>
+                        <p>Là đội viên nữ, Thủy Tiên được giao nhiệm vụ đưa cơm, giấu tài liệu trong quần áo. Em rất khéo léo và luôn hoàn thành xuất sắc nhiệm vụ.</p>
+                        
+                        <h4>Thanh Thủy (Lý Thị Xậu) - 8 tuổi</h4>
+                        <p>Là đội viên nhỏ tuổi nhất, Thanh Thủy thường được giao những nhiệm vụ đơn giản như canh gác, nhưng em luôn làm với tinh thần trách nhiệm cao.</p>
+                        
+                        <p>Cả năm đội viên đều là con em các gia đình cách mạng ở Cao Bằng. Họ đã sống và chiến đấu hết mình cho lý tưởng độc lập dân tộc, để lại tấm gương sáng cho các thế hệ thiếu nhi Việt Nam.</p>
+                    `
+                },
+                3: {
+                    title: 'Kim Đồng - Người đội trưởng huyền thoại',
+                    content: `
+                        <h4>Những ngày cuối cùng</h4>
+                        <p>Ngày 15/2/1943, một ngày mùa đông lạnh giá ở Cao Bằng. Kim Đồng nhận nhiệm vụ dẫn đường cho các đồng chí cán bộ đến địa điểm họp bí mật. Trên đường đi, em phát hiện quân Pháp đang phục kích gần nơi cán bộ sẽ họp.</p>
+                        
+                        <p>Không một chút do dự, Kim Đồng nhanh trí đánh lạc hướng địch. Em giả vờ làm người đi rừng, cố tình gây tiếng động để quân Pháp phát hiện và đuổi theo. Nhờ đó, các đồng chí cán bộ kịp thời rút lui an toàn.</p>
+                        
+                        <p>Trong lúc chạy, Kim Đồng bị trúng đạn và hy sinh bên bờ suối Lê Nin. Khi đó, em mới 14 tuổi. Tin anh hy sinh làm cả vùng Cao Bằng thương tiếc. Đồng bào và đồng đội đã tổ chức lễ tang trọng thể cho người đội trưởng anh hùng.</p>
+                        
+                        <h4>Tấm gương sáng mãi</h4>
+                        <p>Chủ tịch Hồ Chí Minh đã viết: "Kim Đồng là người đội viên đầu tiên của Đội ta. Cháu đã hy sinh anh dũng khi làm nhiệm vụ. Tên tuổi cháu mãi mãi sáng ngời trong lịch sử Đội và trong lòng thiếu nhi Việt Nam."</p>
+                        
+                        <p>Ngày nay, tên Kim Đồng được đặt cho nhiều trường học, đường phố, và là niềm tự hào của thiếu nhi Việt Nam. Hàng năm, vào ngày 15/2, các liên đội trên cả nước đều tổ chức lễ tưởng niệm anh.</p>
+                    `
+                },
+                4: {
+                    title: 'Lê Văn Tám và kho xăng Thị Nghè',
+                    content: `
+                        <h4>Một buổi sáng lịch sử</h4>
+                        <p>Sài Gòn, tháng 10 năm 1947. Cậu bé 12 tuổi Lê Văn Tám đang bán rau ở chợ thì được một chú cán bộ cách mạng tiếp cận và giao nhiệm vụ đặc biệt: đốt kho xăng Thị Nghè của giặc Pháp.</p>
+                        
+                        <p>Không chút do dự, Lê Văn Tám nhận lời. Em hiểu rằng nhiệm vụ này vô cùng nguy hiểm, nhưng vì độc lập tự do của Tổ quốc, em sẵn sàng hy sinh.</p>
+                        
+                        <h4>Giờ phút quyết định</h4>
+                        <p>Ngày 15/10/1947, Lê Văn Tám mặc chiếc áo đã tẩm xăng, trà trộn vào đoàn người gánh rau vào khu vực kho xăng. Khi đến gần kho, em nhanh chóng châm lửa và lao vào. Ngọn lửa bùng lên dữ dội, thiêu rụi kho xăng khổng lồ của giặc.</p>
+                        
+                        <p>Tiếng nổ làm rung chuyển cả một vùng. Lê Văn Tám đã anh dũng hy sinh, lấy thân mình làm ngọn đuốc soi đường cho cách mạng. Sự hy sinh của em đã góp phần làm suy yếu hậu cần của địch, tạo thế và lực cho quân ta.</p>
+                        
+                        <h4>Bài ca bất tử</h4>
+                        <p>Nhạc sĩ Phong Nhã đã sáng tác bài hát "Kim Đồng" để ca ngợi tấm gương hy sinh của Lê Văn Tám. Câu hát "Lê Văn Tám, người thiếu niên dũng cảm, đã lấy thân mình làm ngọn đuốc sống" vẫn còn vang mãi đến ngày nay.</p>
+                    `
+                },
+                5: {
+                    title: 'Võ Thị Sáu trước tòa án địch',
+                    content: `
+                        <h4>Phiên tòa lịch sử</h4>
+                        <p>Năm 1952, tại Côn Đảo, thực dân Pháp mở phiên tòa xử chị Võ Thị Sáu. Chúng hy vọng sẽ khuất phục được người con gái trẻ tuổi này. Nhưng chúng đã lầm.</p>
+                        
+                        <p>Trước tòa án, chị Võ Thị Sáu hiên ngang khẳng định: "Tôi là người Việt Nam, tôi yêu nước Việt Nam, tôi chống Pháp để cứu nước. Đó là lẽ phải, không có gì phải xấu hổ. Chính các ông mới là những kẻ đi xâm lược, các ông mới đáng bị trừng trị."</p>
+                        
+                        <h4>Câu nói làm rúng động phiên tòa</h4>
+                        <p>Khi quan tòa hỏi: "Cô có biết tội của cô là gì không?", chị Võ Thị Sáu trả lời: "Tôi không có tội. Chỉ có tội là yêu nước, chống bọn thực dân xâm lược. Các ông mới là những kẻ có tội khi đến xâm lược đất nước tôi."</p>
+                        
+                        <p>Trước khi tuyên án, chị Võ Thị Sáu còn nói: "Các ông có thể giết tôi, nhưng không thể giết được lòng yêu nước của nhân dân Việt Nam. Độc lập tự do của Tổ quốc sẽ trường tồn mãi mãi."</p>
+                        
+                        <h4>Giờ phút cuối cùng</h4>
+                        <p>Sáng ngày 23/1/1952, trên bãi đất trống ở Côn Đảo, chị Võ Thị Sáu hiên ngang bước ra pháp trường. Chị từ chối bịt mắt và yêu cầu được nhìn thẳng vào họng súng của kẻ thù. Trước khi hy sinh, chị cất cao giọng hát bài Quốc tế ca và hô vang "Việt Nam độc lập muôn năm!"</p>
+                        
+                        <p>Chị Võ Thị Sáu ra đi khi mới 19 tuổi, nhưng tên tuổi và khí phách của chị mãi mãi là biểu tượng sáng ngời của chủ nghĩa anh hùng cách mạng Việt Nam.</p>
+                    `
+                },
+                6: {
+                    title: 'Nguyễn Bá Ngọc - Tấm gương hy sinh cứu bạn',
+                    content: `
+                        <h4>Một ngày định mệnh</h4>
+                        <p>Năm 1965, chiến tranh phá hoại của đế quốc Mỹ leo thang ra miền Bắc. Tại thị xã Quảng Yên, tỉnh Quảng Ninh, không quân Mỹ liên tục ném bom. Cậu bé 12 tuổi Nguyễn Bá Ngọc, học sinh lớp 6, đang cùng các bạn chơi trong sân trường thì máy bay Mỹ ập đến.</p>
+                        
+                        <h4>Hành động dũng cảm</h4>
+                        <p>Tiếng còi báo động vang lên. Mọi người hối hả chạy tìm nơi trú ẩn. Nguyễn Bá Ngọc đã chạy được đến hầm trú ẩn, nhưng em chợt thấy hai em nhỏ vẫn còn ở ngoài sân, hoảng sợ không biết chạy đi đâu.</p>
+                        
+                        <p>Không một chút do dự, Nguyễn Bá Ngọc lao ra, ôm lấy hai em nhỏ và che chắn cho các em. Đúng lúc đó, một quả bom rơi xuống gần đó. Mảnh bom văng vào người em, nhưng em vẫn cố gắng dùng thân mình bảo vệ hai em nhỏ.</p>
+                        
+                        <h4>Sự hy sinh cao cả</h4>
+                        <p>Khi mọi người chạy đến, Nguyễn Bá Ngọc đã hy sinh nhưng hai em nhỏ được cứu sống. Trên môi em còn nở nụ cười thanh thản. Hành động dũng cảm của em đã lay động hàng triệu trái tim Việt Nam.</p>
+                        
+                        <h4>Bức thư của Bác Hồ</h4>
+                        <p>Biết tin về tấm gương hy sinh của Nguyễn Bá Ngọc, Chủ tịch Hồ Chí Minh đã viết thư gửi em: "Cháu Nguyễn Bá Ngọc yêu quý! Cháu là một tấm gương sáng về lòng dũng cảm và tinh thần hy sinh vì mọi người. Cháu đã làm rạng rỡ truyền thống của Đội Thiếu niên Tiền phong Hồ Chí Minh."</p>
+                    `
+                },
+                7: {
+                    title: 'Lý Tự Trọng - Câu nói bất hủ',
+                    content: `
+                        <h4>Tuổi trẻ và lý tưởng</h4>
+                        <p>Lý Tự Trọng sinh ra trong một gia đình yêu nước ở Hà Tĩnh. Năm 14 tuổi, anh được tổ chức cử sang Quảng Châu (Trung Quốc) học tập và tham gia cách mạng. Tại đây, anh được gặp và làm việc với nhiều nhà cách mạng lão thành, được tôi luyện trong môi trường cách mạng.</p>
+                        
+                        <p>Năm 17 tuổi, Lý Tự Trọng trở về nước hoạt động với nhiệm vụ liên lạc cho Xứ ủy Nam Kỳ. Anh nổi tiếng với sự nhanh nhẹn, thông minh và lòng dũng cảm.</p>
+                        
+                        <h4>Phút giây lịch sử</h4>
+                        <p>Ngày 8/2/1931, trong một cuộc mít tinh kỷ niệm khởi nghĩa Yên Bái, Lý Tự Trọng đã bắn chết tên mật thám Legrand để bảo vệ diễn giả. Anh bị bắt và đưa ra xét xử.</p>
+                        
+                        <p>Trước tòa án của thực dân Pháp, các luật sư biện hộ cố gắng bào chữa rằng anh còn trẻ, chưa đủ tuổi vị thành niên. Nhưng Lý Tự Trọng đã hiên ngang tuyên bố: "Tôi hành động có ý thức, tôi hiểu việc tôi làm. Tôi làm vì mục đích cách mạng."</p>
+                        
+                        <h4>Câu nói bất hủ</h4>
+                        <p>Khi quan tòa hỏi về lý tưởng sống, Lý Tự Trọng đã nói câu nói nổi tiếng: "Con đường của thanh niên chỉ là con đường cách mạng, không thể có con đường nào khác."</p>
+                        
+                        <p>Câu nói ấy vang lên trong phòng xử án, như một tiếng sét, làm rúng động lòng người. Nó thể hiện lý tưởng cao đẹp, khí phách hiên ngang và niềm tin sắt đá của người chiến sĩ cộng sản trẻ tuổi.</p>
+                        
+                        <h4>Bài học cho thế hệ trẻ</h4>
+                        <p>Lý Tự Trọng hy sinh khi mới 17 tuổi, nhưng câu nói bất hủ của anh đã trở thành kim chỉ nam cho các thế hệ thanh niên Việt Nam. Nó nhắc nhở mỗi người trẻ hãy sống có lý tưởng, có hoài bão và cống hiến hết mình cho Tổ quốc.</p>
+                    `
+                },
+                8: {
+                    title: 'Phong trào Kế hoạch nhỏ',
+                    content: `
+                        <h4>Khởi nguồn của phong trào</h4>
+                        <p>Năm 1976, đất nước vừa thống nhất, kinh tế còn nhiều khó khăn. Trung ương Đoàn và Hội đồng Đội Trung ương đã phát động phong trào "Kế hoạch nhỏ" nhằm giáo dục thiếu nhi ý thức tiết kiệm, yêu lao động và tinh thần tương thân tương ái.</p>
+                        
+                        <p>Ý tưởng của phong trào rất đơn giản: mỗi đội viên thu gom giấy vụn, sách báo cũ, nuôi heo đất... để gây quỹ giúp đỡ bạn nghèo và xây dựng các công trình măng non.</p>
+                        
+                        <h4>Những con số ấn tượng</h4>
+                        <p>Chỉ trong năm đầu tiên, phong trào đã thu được hàng nghìn tấn giấy vụn, hàng tỷ đồng từ nuôi heo đất. Số tiền này đã được dùng để xây dựng Nhà máy nhựa Tiền Phong tại Hải Phòng - một công trình mang tên Đội ta.</p>
+                        
+                        <p>Hàng triệu đội viên trên cả nước đã tham gia phong trào với tinh thần "Tuổi nhỏ làm việc nhỏ, tùy theo sức của mình". Nhiều bạn đã tiết kiệm từ những đồng tiền lẻ, từ việc thu gom phế liệu để đóng góp cho quỹ.</p>
+                        
+                        <h4>Ý nghĩa giáo dục sâu sắc</h4>
+                        <p>Phong trào "Kế hoạch nhỏ" không chỉ có ý nghĩa về mặt vật chất mà còn mang giá trị giáo dục to lớn:</p>
+                        <ul>
+                            <li>Giáo dục ý thức tiết kiệm, chống lãng phí</li>
+                            <li>Rèn luyện tinh thần lao động, yêu lao động</li>
+                            <li>Hình thành nhân cách biết chia sẻ, giúp đỡ người khác</li>
+                            <li>Góp phần xây dựng tình đoàn kết, tương thân tương ái</li>
+                        </ul>
+                        
+                        <h4>Kế hoạch nhỏ hôm nay</h4>
+                        <p>Đến nay, phong trào "Kế hoạch nhỏ" vẫn được duy trì và phát triển. Hàng năm, các liên đội vẫn tổ chức thu gom giấy vụn, nuôi heo đất để giúp đỡ bạn nghèo, xây dựng các công trình măng non. Phong trào đã trở thành một trong những hoạt động truyền thống tiêu biểu nhất của Đội TNTP Hồ Chí Minh.</p>
+                    `
+                },
+                9: {
+                    title: 'Phong trào Nghìn việc tốt',
+                    content: `
+                        <h4>Ngọn lửa từ Tam Sơn</h4>
+                        <p>Năm 1964, tại Liên đội Tam Sơn, huyện Tiên Sơn, tỉnh Hà Bắc (nay là huyện Từ Sơn, tỉnh Bắc Ninh), một phong trào đã ra đời và lan tỏa khắp cả nước: phong trào "Nghìn việc tốt".</p>
+                        
+                        <p>Người khởi xướng phong trào là cô giáo Nguyễn Thị Thủy, Tổng phụ trách Đội của trường. Với ý tưởng "Mỗi ngày một việc tốt, mỗi tuần một việc tốt, mỗi tháng một việc tốt", cô đã phát động thi đua trong toàn liên đội.</p>
+                        
+                        <h4>Những việc tốt đầu tiên</h4>
+                        <p>Những việc tốt đầu tiên rất giản dị: nhặt được của rơi trả lại người mất, giúp đỡ bạn học yếu, quét dọn lớp học, giúp đỡ người già, em nhỏ... Nhưng chính những việc làm nhỏ bé đó đã tạo nên một làn sóng thi đua sôi nổi.</p>
+                        
+                        <p>Em Nguyễn Thị Thủy, học sinh lớp 5, là tấm gương tiêu biểu. Em đã thực hiện hàng trăm việc tốt: giúp bạn học tập, nhặt được ví tiền trả lại người mất, giúp đỡ gia đình thương binh liệt sĩ...</p>
+                        
+                        <h4>Lan tỏa toàn quốc</h4>
+                        <p>Phong trào "Nghìn việc tốt" nhanh chóng lan rộng ra các tỉnh phía Bắc, rồi vào miền Nam sau ngày đất nước thống nhất. Hàng triệu đội viên đã hưởng ứng phong trào bằng những việc làm cụ thể, thiết thực.</p>
+                        
+                        <p>Nhiều tấm gương "Nghìn việc tốt" đã xuất hiện: em Nguyễn Bá Ngọc hy sinh cứu bạn, em Lê Thị Thủy ở Hà Tĩnh vượt khó học giỏi, em Nguyễn Văn Hòa ở Nghệ An nhặt được túi vàng trả lại người mất...</p>
+                        
+                        <h4>Ý nghĩa của phong trào</h4>
+                        <p>Phong trào "Nghìn việc tốt" đã góp phần:</p>
+                        <ul>
+                            <li>Giáo dục đạo đức, lối sống cho thiếu nhi</li>
+                            <li>Hình thành nhân cách tốt đẹp ngay từ tuổi nhỏ</li>
+                            <li>Tạo môi trường thi đua sôi nổi trong học tập và rèn luyện</li>
+                            <li>Xây dựng tình đoàn kết, tương thân tương ái</li>
+                        </ul>
+                        
+                        <p>Đến nay, phong trào "Nghìn việc tốt" vẫn là một trong những hoạt động tiêu biểu nhất của Đội TNTP Hồ Chí Minh, góp phần đào tạo thế hệ trẻ trở thành con ngoan, trò giỏi, đội viên tốt, cháu ngoan Bác Hồ.</p>
+                    `
+                },
+                10: {
+                    title: 'Đội ta lớn lên cùng đất nước',
+                    content: `
+                        <h4>80 năm - một chặng đường vẻ vang</h4>
+                        <p>Từ 5 đội viên đầu tiên trong buổi thành lập ngày 15/5/1941, Đội TNTP Hồ Chí Minh đã phát triển thành một tổ chức rộng lớn với hàng chục triệu đội viên trên khắp mọi miền Tổ quốc.</p>
+                        
+                        <h4>Những con số biết nói</h4>
+                        <p>Qua 80 năm xây dựng và trưởng thành, Đội ta đã:</p>
+                        <ul>
+                            <li>Kết nạp hơn 50 triệu đội viên</li>
+                            <li>Đào tạo hàng triệu cán bộ Đoàn, Đội ưu tú</li>
+                            <li>Xây dựng hàng nghìn công trình măng non</li>
+                            <li>Giúp đỡ hàng triệu bạn nhỏ có hoàn cảnh khó khăn</li>
+                            <li>Phát động nhiều phong trào lớn: Kế hoạch nhỏ, Nghìn việc tốt, Vòng tay bè bạn...</li>
+                        </ul>
+                        
+                        <h4>Những tấm gương sáng</h4>
+                        <p>Đội ta tự hào có những tấm gương đội viên tiêu biểu:</p>
+                        <ul>
+                            <li><strong>Kim Đồng</strong> - Đội trưởng đầu tiên hy sinh anh dũng</li>
+                            <li><strong>Lê Văn Tám</strong> - Dũng sĩ diệt kho xăng Thị Nghè</li>
+                            <li><strong>Võ Thị Sáu</strong> - Nữ anh hùng trẻ tuổi</li>
+                            <li><strong>Nguyễn Bá Ngọc</strong> - Tấm gương hy sinh cứu bạn</li>
+                            <li><strong>Lý Tự Trọng</strong> - "Con đường của thanh niên chỉ là con đường cách mạng"</li>
+                            <li><strong>Nguyễn Văn Trỗi</strong> - Chiến sĩ biệt động Sài Gòn</li>
+                        </ul>
+                        
+                        <h4>Đội ta hôm nay</h4>
+                        <p>Trong thời đại mới, Đội TNTP Hồ Chí Minh tiếp tục phát huy truyền thống vẻ vang, đổi mới nội dung và phương thức hoạt động để phù hợp với tình hình mới. Các phong trào được triển khai sáng tạo, hiệu quả, thu hút đông đảo đội viên tham gia.</p>
+                        
+                        <p>Các cuộc vận động "Thiếu nhi Việt Nam thi đua thực hiện tốt 5 điều Bác Hồ dạy", "Học tập và làm theo tấm gương đạo đức Hồ Chí Minh" được triển khai sâu rộng, góp phần giáo dục thế hệ trẻ trở thành công dân tốt, có ích cho xã hội.</p>
+                        
+                        <h4>Tương lai phía trước</h4>
+                        <p>Với truyền thống 80 năm vẻ vang, Đội TNTP Hồ Chí Minh sẽ tiếp tục đồng hành cùng thiếu nhi Việt Nam trên con đường học tập, rèn luyện và trưởng thành. Các thế hệ đội viên hôm nay sẽ viết tiếp trang sử hào hùng của Đội, góp phần xây dựng đất nước Việt Nam giàu đẹp, văn minh.</p>
+                        
+                        <p style="font-style: italic; text-align: center; margin-top: 20px;">"Đội ta lớn lên cùng đất nước, cùng non sông, cùng Bác Hồ vĩ đại"</p>
+                    `
+                }
+            };
+            
+            modalBody.innerHTML = stories[storyId].content;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('heroModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('heroModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Initialize first tab
+        document.addEventListener('DOMContentLoaded', function() {
+            showTab('timeline');
+        });
+    </script>
+</body>
+</html>
