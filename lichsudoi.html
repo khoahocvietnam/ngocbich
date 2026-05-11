@@ -221,15 +221,26 @@
         }
 
         .hero-image {
-            height: 200px;
-            background: linear-gradient(135deg, #6DD5ED, #2193B0);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4em;
-        }
+    height: 200px;
+    background: linear-gradient(135deg, #6DD5ED, #2193B0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 4em;
+    overflow: hidden;
+}
 
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.hero-card:hover .hero-image img {
+    transform: scale(1.05);
+}
         .hero-info {
             padding: 20px;
         }
@@ -728,81 +739,79 @@
         <!-- Heroes Tab -->
         <div id="heroes-tab" class="tab-content">
             <h2 class="section-title">ANH HÙNG ĐỘI VIÊN TIÊU BIỂU</h2>
-            <div class="heroes-grid">
-                <!-- Kim Đồng -->
-                <div class="hero-card" onclick="showHeroProfile('kimdong')">
-                    <div class="hero-image">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="hero-info">
-                        <h3>Kim Đồng</h3>
-                        <p class="title">Nông Văn Dền (1929-1943)</p>
-                        <p>Đội trưởng đầu tiên của Đội TNTP Hồ Chí Minh, hy sinh khi làm nhiệm vụ bảo vệ cán bộ cách mạng.</p>
-                    </div>
-                </div>
-
-                <!-- Lê Văn Tám -->
-                <div class="hero-card" onclick="showHeroProfile('levantam')">
-                    <div class="hero-image">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <div class="hero-info">
-                        <h3>Lê Văn Tám</h3>
-                        <p class="title">(1942-1947)</p>
-                        <p>Dũng sĩ diệt kho xăng Thị Nghè, tấm gương hy sinh anh dũng vì cách mạng.</p>
-                    </div>
-                </div>
-
-                <!-- Võ Thị Sáu -->
-                <div class="hero-card" onclick="showHeroProfile('vothisau')">
-                    <div class="hero-image">
-                        <i class="fas fa-female"></i>
-                    </div>
-                    <div class="hero-info">
-                        <h3>Võ Thị Sáu</h3>
-                        <p class="title">(1933-1952)</p>
-                        <p>Nữ anh hùng liệt sĩ, người con gái Đất Đỏ kiên trung bất khuất.</p>
-                    </div>
-                </div>
-
-                <!-- Nguyễn Bá Ngọc -->
-                <div class="hero-card" onclick="showHeroProfile('nguyenbangoc')">
-                    <div class="hero-image">
-                        <i class="fas fa-child"></i>
-                    </div>
-                    <div class="hero-info">
-                        <h3>Nguyễn Bá Ngọc</h3>
-                        <p class="title">(1953-1965)</p>
-                        <p>Hy sinh cứu các bạn nhỏ trong chiến tranh phá hoại của đế quốc Mỹ.</p>
-                    </div>
-                </div>
-
-                <!-- Lý Tự Trọng -->
-                <div class="hero-card" onclick="showHeroProfile('lytutrong')">
-                    <div class="hero-image">
-                        <i class="fas fa-gavel"></i>
-                    </div>
-                    <div class="hero-info">
-                        <h3>Lý Tự Trọng</h3>
-                        <p class="title">(1914-1931)</p>
-                        <p>"Con đường của thanh niên chỉ là con đường cách mạng" - Câu nói nổi tiếng trước tòa án địch.</p>
-                    </div>
-                </div>
-
-                <!-- Nguyễn Văn Trỗi -->
-                <div class="hero-card" onclick="showHeroProfile('nguyenvantroi')">
-                    <div class="hero-image">
-                        <i class="fas fa-bomb"></i>
-                    </div>
-                    <div class="hero-info">
-                        <h3>Nguyễn Văn Trỗi</h3>
-                        <p class="title">(1940-1964)</p>
-                        <p>Anh hùng lực lượng vũ trang nhân dân, tấm gương chiến đấu kiên cường.</p>
-                    </div>
-                </div>
-            </div>
+<div class="heroes-grid">
+    <!-- Kim Đồng -->
+    <div class="hero-card" onclick="showHeroProfile('kimdong')">
+        <div class="hero-image">
+            <img src="images/kim-dong.jpg" alt="Kim Đồng" onerror="this.src='https://via.placeholder.com/200?text=Kim+Đồng'">
         </div>
+        <div class="hero-info">
+            <h3>Kim Đồng</h3>
+            <p class="title">Nông Văn Dền (1929-1943)</p>
+            <p>Đội trưởng đầu tiên của Đội TNTP Hồ Chí Minh, hy sinh khi làm nhiệm vụ bảo vệ cán bộ cách mạng.</p>
+        </div>
+    </div>
 
+    <!-- Lê Văn Tám -->
+    <div class="hero-card" onclick="showHeroProfile('levantam')">
+        <div class="hero-image">
+            <img src="images/le-van-tam.jpg" alt="Lê Văn Tám" onerror="this.src='https://via.placeholder.com/200?text=Lê+Văn+Tám'">
+        </div>
+        <div class="hero-info">
+            <h3>Lê Văn Tám</h3>
+            <p class="title">(1942-1947)</p>
+            <p>Dũng sĩ diệt kho xăng Thị Nghè, tấm gương hy sinh anh dũng vì cách mạng.</p>
+        </div>
+    </div>
+
+    <!-- Võ Thị Sáu -->
+    <div class="hero-card" onclick="showHeroProfile('vothisau')">
+        <div class="hero-image">
+            <img src="images/vo-thi-sau.jpg" alt="Võ Thị Sáu" onerror="this.src='https://via.placeholder.com/200?text=Võ+Thị+Sáu'">
+        </div>
+        <div class="hero-info">
+            <h3>Võ Thị Sáu</h3>
+            <p class="title">(1933-1952)</p>
+            <p>Nữ anh hùng liệt sĩ, người con gái Đất Đỏ kiên trung bất khuất.</p>
+        </div>
+    </div>
+
+    <!-- Nguyễn Bá Ngọc -->
+    <div class="hero-card" onclick="showHeroProfile('nguyenbangoc')">
+        <div class="hero-image">
+            <img src="images/nguyen-ba-ngoc.jpg" alt="Nguyễn Bá Ngọc" onerror="this.src='https://via.placeholder.com/200?text=Nguyễn+Bá+Ngọc'">
+        </div>
+        <div class="hero-info">
+            <h3>Nguyễn Bá Ngọc</h3>
+            <p class="title">(1953-1965)</p>
+            <p>Hy sinh cứu các bạn nhỏ trong chiến tranh phá hoại của đế quốc Mỹ.</p>
+        </div>
+    </div>
+
+    <!-- Lý Tự Trọng -->
+    <div class="hero-card" onclick="showHeroProfile('lytutrong')">
+        <div class="hero-image">
+            <img src="images/ly-tu-trong.jpg" alt="Lý Tự Trọng" onerror="this.src='https://via.placeholder.com/200?text=Lý+Tự+Trọng'">
+        </div>
+        <div class="hero-info">
+            <h3>Lý Tự Trọng</h3>
+            <p class="title">(1914-1931)</p>
+            <p>"Con đường của thanh niên chỉ là con đường cách mạng" - Câu nói nổi tiếng trước tòa án địch.</p>
+        </div>
+    </div>
+
+    <!-- Nguyễn Văn Trỗi -->
+    <div class="hero-card" onclick="showHeroProfile('nguyenvantroi')">
+        <div class="hero-image">
+            <img src="images/nguyen-van-troi.jpg" alt="Nguyễn Văn Trỗi" onerror="this.src='https://via.placeholder.com/200?text=Nguyễn+Văn+Trỗi'">
+        </div>
+        <div class="hero-info">
+            <h3>Nguyễn Văn Trỗi</h3>
+            <p class="title">(1940-1964)</p>
+            <p>Anh hùng lực lượng vũ trang nhân dân, tấm gương chiến đấu kiên cường.</p>
+        </div>
+    </div>
+</div>
         <!-- Stories Tab -->
         <div id="stories-tab" class="tab-content">
             <h2 class="section-title">CÂU CHUYỆN VỀ ĐỘI TA</h2>
