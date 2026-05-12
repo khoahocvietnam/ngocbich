@@ -8,56 +8,62 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Open Sans', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; }
+        body { font-family: 'Open Sans', sans-serif; background: #fff5f5; min-height: 100vh; }
         .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-        .header { background: linear-gradient(135deg, #FFC107, #FF8F00); color: white; padding: 30px; text-align: center; border-radius: 15px; margin-bottom: 25px; }
-        .header h1 { font-family: 'Montserrat', sans-serif; font-size: 2em; }
-        .back-btn { display: inline-block; margin-top: 15px; padding: 8px 25px; background: white; color: #FF8F00; text-decoration: none; border-radius: 50px; font-weight: 600; transition: 0.3s; }
-        .back-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .header { background: linear-gradient(135deg, #E8201F, #C40201); color: #FFD700; padding: 30px; text-align: center; border-radius: 15px; margin-bottom: 25px; border: 1px solid #FFD700; }
+        .header h1 { font-family: 'Montserrat', sans-serif; font-size: 2em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .header p { color: #FFD700; }
+        .back-btn { display: inline-block; margin-top: 15px; padding: 8px 25px; background: #FFD700; color: #C40201; text-decoration: none; border-radius: 50px; font-weight: 600; transition: 0.3s; }
+        .back-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); background: #FFC107; }
         .tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .tab-btn { padding: 10px 20px; background: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .tab-btn.active { background: linear-gradient(135deg, #FFC107, #FF8F00); color: white; }
-        .tab-btn:hover { transform: translateY(-2px); }
-        .card { background: white; border-radius: 15px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); display: none; }
+        .tab-btn { padding: 10px 20px; background: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; transition: 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); color: #C40201; border: 1px solid #C40201; }
+        .tab-btn.active { background: linear-gradient(135deg, #E8201F, #C40201); color: #FFD700; border: 1px solid #FFD700; }
+        .tab-btn:hover { transform: translateY(-2px); background: #C40201; color: #FFD700; }
+        .card { background: white; border-radius: 15px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); display: none; border: 1px solid #FFD700; }
         .card.active { display: block; }
         .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #555; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #C40201; }
         .form-group input, .form-group select { width: 100%; padding: 10px; border: 2px solid #e9ecef; border-radius: 8px; }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: #FF8F00; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #C40201; }
         .btn { padding: 10px 20px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
-        .btn-primary { background: linear-gradient(135deg, #FFC107, #FF8F00); color: white; }
+        .btn-primary { background: linear-gradient(135deg, #E8201F, #C40201); color: #FFD700; }
         .btn-success { background: linear-gradient(135deg, #28a745, #20c997); color: white; }
         .btn-secondary { background: #6c757d; color: white; }
         .btn-danger { background: linear-gradient(135deg, #dc3545, #c82333); color: white; }
+        .btn-warning { background: linear-gradient(135deg, #FFD700, #FFC107); color: #C40201; }
         .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .quiz-stats { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
+        .quiz-stats { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; background: #fff5f5; padding: 15px; border-radius: 10px; }
         .stats-group { display: flex; gap: 25px; }
         .stat { text-align: center; }
         .stat .label { font-size: 0.8em; color: #666; }
-        .stat .value { font-size: 1.5em; font-weight: 700; color: #FF8F00; }
+        .stat .value { font-size: 1.5em; font-weight: 700; color: #C40201; }
         .progress-bar { flex: 1; height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, #FFC107, #FF8F00); transition: width 0.3s; }
-        .question-number { color: #FF8F00; font-weight: 600; margin-bottom: 15px; }
-        .question-text { font-size: 1.1em; margin-bottom: 20px; line-height: 1.5; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #E8201F, #C40201); transition: width 0.3s; }
+        .question-number { color: #C40201; font-weight: 600; margin-bottom: 15px; font-size: 1.1em; }
+        .question-text { font-size: 1.1em; margin-bottom: 20px; line-height: 1.5; font-weight: 500; }
         .options { display: grid; gap: 10px; }
-        .option { display: flex; align-items: center; padding: 10px 15px; background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; cursor: pointer; transition: 0.3s; }
-        .option:hover:not(.disabled) { border-color: #FFC107; transform: translateX(5px); }
-        .option input { width: 18px; height: 18px; margin-right: 12px; cursor: pointer; accent-color: #FF8F00; }
-        .option label { flex: 1; cursor: pointer; }
+        .option { display: flex; align-items: center; padding: 12px 15px; background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
+        .option:hover:not(.disabled) { border-color: #E8201F; transform: translateX(5px); background: #fff5f5; }
+        .option input { width: 18px; height: 18px; margin-right: 12px; cursor: pointer; accent-color: #C40201; }
+        .option label { flex: 1; cursor: pointer; font-weight: 500; }
         .option.correct { background: #d4edda; border-color: #28a745; }
+        .option.correct label { color: #155724; }
         .option.incorrect { background: #f8d7da; border-color: #dc3545; }
-        .disabled { opacity: 0.7; cursor: not-allowed; }
+        .option.incorrect label { color: #721c24; }
+        .option.selected-correct { background: #c8e6c9; border-color: #4caf50; }
+        .disabled { opacity: 0.8; cursor: not-allowed; }
         .quiz-controls { display: flex; gap: 10px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
         .loading { text-align: center; padding: 40px; }
-        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #FF8F00; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #C40201; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .result-item { display: flex; justify-content: space-between; padding: 12px; border-bottom: 1px solid #dee2e6; }
-        .result-stats { max-width: 400px; margin: 0 auto; }
+        .result-stats { max-width: 400px; margin: 0 auto; background: #fff5f5; padding: 20px; border-radius: 10px; }
         .question-list { max-height: 400px; overflow-y: auto; }
-        .question-item { background: #f8f9fa; padding: 10px; margin-bottom: 8px; border-radius: 8px; border-left: 3px solid #FFC107; }
+        .question-item { background: #f8f9fa; padding: 10px; margin-bottom: 8px; border-radius: 8px; border-left: 3px solid #E8201F; }
         @media (max-width: 768px) { .quiz-stats { flex-direction: column; } .stats-group { width: 100%; justify-content: space-around; } .progress-bar { width: 100%; } .quiz-controls { flex-direction: column; } .btn { width: 100%; justify-content: center; } }
-        .footer { text-align: center; margin-top: 30px; padding: 15px; color: #666; font-size: 0.85em; }
-        .api-notice { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9em; }
+        .footer { text-align: center; margin-top: 30px; padding: 15px; color: #C40201; font-size: 0.85em; background: #fff5f5; border-radius: 10px; }
+        .api-notice { background: #fff5f5; border-left: 4px solid #C40201; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9em; }
+        .correct-answer-notice { background: #d4edda; color: #155724; padding: 10px; border-radius: 8px; margin-top: 15px; text-align: center; }
     </style>
 </head>
 <body>
@@ -110,7 +116,7 @@
         
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
             <button class="btn btn-primary" onclick="generateQuestions()"><i class="fas fa-magic"></i> Tạo câu hỏi bằng AI</button>
-            <button class="btn btn-secondary" onclick="loadDefaultQuestions()"><i class="fas fa-download"></i> Tải câu hỏi mặc định</button>
+            <button class="btn btn-warning" onclick="loadDefaultQuestions()"><i class="fas fa-download"></i> Tải câu hỏi mặc định</button>
         </div>
         
         <div id="ai-status" style="margin-top: 15px;"></div>
@@ -191,7 +197,7 @@
     function saveQuestions() {
         localStorage.setItem('quiz_data_tnthcm', JSON.stringify(questions));
         document.getElementById('total-count').innerHTML = questions.length;
-        const btn = document.querySelector('.tab-btn:nth-child(3)');
+        const btn = document.querySelectorAll('.tab-btn')[2];
         if (btn) btn.innerHTML = `<i class="fas fa-database"></i> Quản lý (${questions.length})`;
         renderQuestionList();
     }
@@ -208,25 +214,36 @@
 
     function renderCurrentQuestion() {
         if (questions.length === 0) {
-            document.getElementById('quiz-content').innerHTML = `<div style="text-align:center;padding:40px;"><i class="fas fa-database" style="font-size:3em;color:#FFC107"></i><p>Chưa có câu hỏi! Hãy tạo câu hỏi ở tab AI</p></div>`;
+            document.getElementById('quiz-content').innerHTML = `<div style="text-align:center;padding:40px;"><i class="fas fa-database" style="font-size:3em;color:#E8201F"></i><p>Chưa có câu hỏi! Hãy tạo câu hỏi ở tab AI</p></div>`;
             return;
         }
         const q = questions[currentIndex];
-        let html = `<div class="question-number">Câu ${currentIndex+1}/${questions.length}</div>
+        let html = `<div class="question-number">📌 Câu ${currentIndex+1}/${questions.length}</div>
                     <div class="question-text">${q.question}</div><div class="options">`;
         q.options.forEach((opt, idx) => {
             const checked = userAnswers[currentIndex] === idx;
-            let extra = '';
+            let extraClass = '';
             if (quizSubmitted) {
-                if (idx === q.correct) extra = 'correct';
-                else if (userAnswers[currentIndex] === idx) extra = 'incorrect';
+                if (idx === q.correct) {
+                    extraClass = 'correct';
+                } else if (userAnswers[currentIndex] === idx && idx !== q.correct) {
+                    extraClass = 'incorrect';
+                }
             }
-            html += `<div class="option ${extra}" onclick="${!quizSubmitted ? `selectAnswer(${idx})` : ''}">
+            html += `<div class="option ${extraClass}" onclick="${!quizSubmitted ? `selectAnswer(${idx})` : ''}">
                         <input type="radio" ${checked ? 'checked' : ''} ${quizSubmitted ? 'disabled' : ''}>
                         <label>${opt}</label>
                     </div>`;
         });
         html += `</div>`;
+        if (quizSubmitted && userAnswers[currentIndex] !== undefined && userAnswers[currentIndex] !== null) {
+            const isCorrect = userAnswers[currentIndex] === q.correct;
+            if (isCorrect) {
+                html += `<div class="correct-answer-notice"><i class="fas fa-check-circle"></i> ✅ Đáp án đúng: ${q.options[q.correct]}</div>`;
+            } else {
+                html += `<div class="correct-answer-notice"><i class="fas fa-info-circle"></i> 📖 Đáp án đúng: ${q.options[q.correct]}</div>`;
+            }
+        }
         document.getElementById('quiz-content').innerHTML = html;
         document.getElementById('prev-btn').disabled = currentIndex === 0 || quizSubmitted;
         if (currentIndex === questions.length-1 && !quizSubmitted) {
@@ -238,7 +255,18 @@
         }
     }
 
-    function selectAnswer(idx) { if (!quizSubmitted && questions.length) { userAnswers[currentIndex] = idx; renderCurrentQuestion(); updateStats(); } }
+    function selectAnswer(idx) { 
+        if (!quizSubmitted && questions.length) {
+            userAnswers[currentIndex] = idx; 
+            renderCurrentQuestion(); 
+            updateStats();
+            setTimeout(() => {
+                if (currentIndex < questions.length - 1) nextQuestion();
+                else if (currentIndex === questions.length - 1) updateStats();
+            }, 300);
+        } 
+    }
+    
     function nextQuestion() { if (currentIndex < questions.length-1) { currentIndex++; renderCurrentQuestion(); } }
     function prevQuestion() { if (currentIndex > 0) { currentIndex--; renderCurrentQuestion(); } }
     
@@ -252,19 +280,36 @@
         document.getElementById('progress-fill').style.width = `${(answered/questions.length)*100}%`;
     }
 
-    function submitQuiz() { if (!questions.length) return; quizSubmitted = true; renderCurrentQuestion(); document.getElementById('submit-btn').style.display = 'none'; document.getElementById('next-btn').style.display = 'inline-flex'; document.getElementById('result-tab-btn').style.display = 'inline-flex'; switchTab('result'); showResults(); }
-    function resetQuiz() { initQuiz(); switchTab('quiz'); }
+    function submitQuiz() { 
+        if (!questions.length) return; 
+        quizSubmitted = true; 
+        renderCurrentQuestion(); 
+        document.getElementById('submit-btn').style.display = 'none'; 
+        document.getElementById('next-btn').style.display = 'inline-flex';
+        document.getElementById('prev-btn').disabled = true;
+        document.getElementById('result-tab-btn').style.display = 'inline-flex'; 
+        switchTab('result'); 
+        showResults(); 
+    }
+    
+    function resetQuiz() { initQuiz(); switchTab('quiz'); document.getElementById('prev-btn').disabled = false; }
     
     function showResults() {
         const correct = userAnswers.reduce((c, a, i) => c + (a === questions[i]?.correct ? 1 : 0), 0);
         const percent = questions.length ? ((correct/questions.length)*100).toFixed(1) : 0;
-        let msg = percent >= 80 ? '🎉 Xuất sắc!' : percent >= 60 ? '👍 Tốt!' : percent >= 40 ? '📚 Khá!' : '📖 Cố gắng hơn!';
-        document.getElementById('result-stats').innerHTML = `<div class="result-item"><span>Tổng số:</span><span style="color:#FF8F00;font-weight:700">${questions.length}</span></div>
-            <div class="result-item"><span>Đã làm:</span><span style="color:#FF8F00;font-weight:700">${userAnswers.filter(a=>a!==null).length}</span></div>
+        let msg = '';
+        if (percent >= 90) msg = '🎉 Xuất sắc! Bạn là chuyên gia về Đội TNTP!';
+        else if (percent >= 75) msg = '👍 Tốt! Bạn đã nắm vững kiến thức cơ bản!';
+        else if (percent >= 60) msg = '📚 Khá! Hãy ôn tập thêm nhé!';
+        else if (percent >= 40) msg = '📖 Cố gắng hơn! Đọc lại lịch sử Đội nào!';
+        else msg = '💪 Hãy học thêm về truyền thống Đội nhé!';
+        
+        document.getElementById('result-stats').innerHTML = `<div class="result-item"><span>Tổng số:</span><span style="color:#C40201;font-weight:700">${questions.length}</span></div>
+            <div class="result-item"><span>Đã làm:</span><span style="color:#C40201;font-weight:700">${userAnswers.filter(a=>a!==null).length}</span></div>
             <div class="result-item"><span>Đúng:</span><span style="color:#28a745;font-weight:700">${correct}</span></div>
-            <div class="result-item"><span>Điểm:</span><span style="color:#FF8F00;font-weight:700">${correct*10}</span></div>
-            <div class="result-item"><span>Tỷ lệ:</span><span style="color:#FF8F00;font-weight:700">${percent}%</span></div>`;
-        document.getElementById('result-message').innerHTML = msg;
+            <div class="result-item"><span>Điểm:</span><span style="color:#C40201;font-weight:700">${correct*10}</span></div>
+            <div class="result-item"><span>Tỷ lệ:</span><span style="color:#C40201;font-weight:700">${percent}%</span></div>`;
+        document.getElementById('result-message').innerHTML = `<div style="font-size:1.2em; font-weight:600;">${msg}</div>`;
     }
     
     function reviewAnswers() { switchTab('quiz'); }
@@ -307,7 +352,7 @@
         const filtered = questions.filter(q => q.question.toLowerCase().includes(search));
         const container = document.getElementById('question-list');
         if (!filtered.length) { container.innerHTML = '<p style="text-align:center">Không có câu hỏi</p>'; return; }
-        container.innerHTML = filtered.map(q => `<div class="question-item"><strong>${q.id}.</strong> ${q.question.substring(0,80)}${q.question.length>80?'...':''}<br><small>Đáp án: ${q.options[q.correct]}</small><button onclick="deleteQuestion(${q.id})" style="float:right; background:#dc3545; color:white; border:none; padding:2px 10px; border-radius:5px; cursor:pointer">Xóa</button></div>`).join('');
+        container.innerHTML = filtered.map(q => `<div class="question-item"><strong>${q.id}.</strong> ${q.question.substring(0,80)}${q.question.length>80?'...':''}<br><small style="color:#28a745">Đáp án: ${q.options[q.correct]}</small><button onclick="deleteQuestion(${q.id})" style="float:right; background:#dc3545; color:white; border:none; padding:2px 10px; border-radius:5px; cursor:pointer">Xóa</button></div>`).join('');
     }
     
     function deleteQuestion(id) { if (confirm('Xóa câu hỏi này?')) { questions = questions.filter(q => q.id !== id); saveQuestions(); initQuiz(); } }
