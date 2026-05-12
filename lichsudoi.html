@@ -365,6 +365,31 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
 
+        /* Video container styles */
+        .video-container {
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+            max-height: 300px;
+            object-fit: contain;
+            background: #000;
+        }
+
+        .video-caption {
+            background: #f0f9ff;
+            padding: 8px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #2193B0;
+        }
+
         .timeline-mini {
             position: relative;
             padding-left: 30px;
@@ -542,6 +567,10 @@
             .hero-portrait img {
                 width: 130px;
                 height: 130px;
+            }
+            
+            .video-container video {
+                max-height: 200px;
             }
         }
     </style>
@@ -880,49 +909,195 @@
             const modalSubtitle = document.getElementById('modalHeroSubtitle');
             const modalBody = document.getElementById('modalBody');
             
+            // Video paths for each hero
+            const videoPaths = {
+                kimdong: 'videos/kim-dong.mp4',
+                levantam: 'videos/le-van-tam.mp4',
+                vothisau: 'videos/vo-thi-sau.mp4',
+                nguyenbangoc: 'videos/nguyen-ba-ngoc.mp4',
+                lytutrong: 'videos/ly-tu-trong.mp4',
+                nguyenvantroi: 'videos/nguyen-van-troi.mp4'
+            };
+            
+            // Video captions for each hero
+            const videoCaptions = {
+                kimdong: 'Video về cuộc đời và sự nghiệp của Anh hùng Kim Đồng',
+                levantam: 'Video về chiến công của Anh hùng Lê Văn Tám',
+                vothisau: 'Video về tinh thần bất khuất của Anh hùng Võ Thị Sáu',
+                nguyenbangoc: 'Video về tấm gương hy sinh của Anh hùng Nguyễn Bá Ngọc',
+                lytutrong: 'Video về lý tưởng cách mạng của Anh hùng Lý Tự Trọng',
+                nguyenvantroi: 'Video về người chiến sĩ biệt động Nguyễn Văn Trỗi'
+            };
+            
             const heroes = {
                 kimdong: {
-                    name: 'Kim Đồng', subtitle: 'Nông Văn Dền (1929-1943)',
-                    content: `<div class="hero-portrait"><img src="images/kim-dong.jpg" alt="Kim Đồng" onerror="this.src='https://via.placeholder.com/180x180?text=Kim+Đồng'"></div>
-                    <p><strong>Tiểu sử:</strong> Kim Đồng tên thật là Nông Văn Dền, sinh năm 1929 tại Cao Bằng. Anh là đội trưởng đầu tiên của Đội Nhi đồng Cứu quốc.</p>
-                    <div class="timeline-mini"><div class="timeline-mini-item"><div class="timeline-mini-date">1929</div><div>Sinh ra tại Cao Bằng</div></div><div class="timeline-mini-item"><div class="timeline-mini-date">1941</div><div>Đội trưởng đầu tiên</div></div><div class="timeline-mini-item"><div class="timeline-mini-date">15/02/1943</div><div>Hy sinh tại suối Lê Nin</div></div></div>
-                    <h4>Thành tích:</h4><p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Đội trưởng đầu tiên</span></p>
-                    <h4>Câu chuyện:</h4><p>Kim Đồng phát hiện địch phục kích, đã đánh lạc hướng để cán bộ rút lui an toàn và hy sinh khi mới 14 tuổi.</p>`
+                    name: 'Kim Đồng', 
+                    subtitle: 'Nông Văn Dền (1929-1943)',
+                    content: `
+                        <div class="hero-portrait">
+                            <img src="images/kim-dong.jpg" alt="Kim Đồng" onerror="this.src='https://via.placeholder.com/180x180?text=Kim+Đồng'">
+                        </div>
+                        <div class="video-container">
+                            <video controls>
+                                <source src="${videoPaths.kimdong}" type="video/mp4">
+                                Trình duyệt của bạn không hỗ trợ video.
+                            </video>
+                            <div class="video-caption">
+                                <i class="fas fa-video"></i> ${videoCaptions.kimdong}
+                            </div>
+                        </div>
+                        <p><strong>Tiểu sử:</strong> Kim Đồng tên thật là Nông Văn Dền, sinh năm 1929 tại Cao Bằng. Anh là đội trưởng đầu tiên của Đội Nhi đồng Cứu quốc.</p>
+                        <div class="timeline-mini">
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">1929</div><div>Sinh ra tại Cao Bằng</div></div>
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">1941</div><div>Đội trưởng đầu tiên</div></div>
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">15/02/1943</div><div>Hy sinh tại suối Lê Nin</div></div>
+                        </div>
+                        <h4>Thành tích:</h4>
+                        <p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Đội trưởng đầu tiên</span></p>
+                        <h4>Câu chuyện:</h4>
+                        <p>Kim Đồng phát hiện địch phục kích, đã đánh lạc hướng để cán bộ rút lui an toàn và hy sinh khi mới 14 tuổi.</p>
+                        <h4>Câu nói nổi tiếng:</h4>
+                        <p style="background:#f0f9ff;padding:15px;border-radius:8px">"Nếu các anh bảo vệ được cán bộ, thì dù có hy sinh, nhân dân và Đảng sẽ đời đời nhớ ơn."</p>
+                    `
                 },
                 levantam: {
-                    name: 'Lê Văn Tám', subtitle: '(1942-1947)',
-                    content: `<div class="hero-portrait"><img src="images/le-van-tam.jpg" alt="Lê Văn Tám" onerror="this.src='https://via.placeholder.com/180x180?text=Lê+Văn+Tám'"></div>
-                    <p><strong>Tiểu sử:</strong> Lê Văn Tám sinh năm 1942 tại Sài Gòn. Năm 1947, em đã đốt kho xăng của giặc Pháp ở Thị Nghè.</p>
-                    <div class="timeline-mini"><div class="timeline-mini-item"><div class="timeline-mini-date">1942</div><div>Sinh ra tại Sài Gòn</div></div><div class="timeline-mini-item"><div class="timeline-mini-date">1947</div><div>Tham gia cách mạng</div></div><div class="timeline-mini-item"><div class="timeline-mini-date">15/10/1947</div><div>Hy sinh đốt kho xăng</div></div></div>
-                    <h4>Thành tích:</h4><p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Dũng sĩ diệt kho</span></p>
-                    <h4>Câu chuyện:</h4><p>Em tẩm xăng vào người, giả làm người bán rau vào gần kho xăng và châm lửa, hy sinh để phá hủy kho xăng của giặc.</p>`
+                    name: 'Lê Văn Tám', 
+                    subtitle: '(1942-1947)',
+                    content: `
+                        <div class="hero-portrait">
+                            <img src="images/le-van-tam.jpg" alt="Lê Văn Tám" onerror="this.src='https://via.placeholder.com/180x180?text=Lê+Văn+Tám'">
+                        </div>
+                        <div class="video-container">
+                            <video controls>
+                                <source src="${videoPaths.levantam}" type="video/mp4">
+                                Trình duyệt của bạn không hỗ trợ video.
+                            </video>
+                            <div class="video-caption">
+                                <i class="fas fa-video"></i> ${videoCaptions.levantam}
+                            </div>
+                        </div>
+                        <p><strong>Tiểu sử:</strong> Lê Văn Tám sinh năm 1942 tại Sài Gòn. Năm 1947, em đã đốt kho xăng của giặc Pháp ở Thị Nghè.</p>
+                        <div class="timeline-mini">
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">1942</div><div>Sinh ra tại Sài Gòn</div></div>
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">1947</div><div>Tham gia cách mạng</div></div>
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">15/10/1947</div><div>Hy sinh đốt kho xăng</div></div>
+                        </div>
+                        <h4>Thành tích:</h4>
+                        <p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Dũng sĩ diệt kho</span></p>
+                        <h4>Câu chuyện:</h4>
+                        <p>Em tẩm xăng vào người, giả làm người bán rau vào gần kho xăng và châm lửa, hy sinh để phá hủy kho xăng của giặc.</p>
+                    `
                 },
                 vothisau: {
-                    name: 'Võ Thị Sáu', subtitle: '(1933-1952)',
-                    content: `<div class="hero-portrait"><img src="images/vo-thi-sau.jpg" alt="Võ Thị Sáu" onerror="this.src='https://via.placeholder.com/180x180?text=Võ+Thị+Sáu'"></div>
-                    <p><strong>Tiểu sử:</strong> Võ Thị Sáu sinh năm 1933 tại Đất Đỏ, Bà Rịa. Chị tham gia cách mạng năm 14 tuổi.</p>
-                    <div class="timeline-mini"><div class="timeline-mini-item"><div class="timeline-mini-date">1933</div><div>Sinh ra tại Đất Đỏ</div></div><div class="timeline-mini-item"><div class="timeline-mini-date">1948</div><div>Tham gia cách mạng</div></div><div class="timeline-mini-item"><div class="timeline-mini-date">23/01/1952</div><div>Hy sinh tại Côn Đảo</div></div></div>
-                    <h4>Thành tích:</h4><p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Nữ anh hùng</span></p>
-                    <h4>Câu nói nổi tiếng:</h4><p style="background:#f0f9ff;padding:15px;border-radius:8px">"Yêu nước chống Pháp không phải là tội!"</p>`
+                    name: 'Võ Thị Sáu', 
+                    subtitle: '(1933-1952)',
+                    content: `
+                        <div class="hero-portrait">
+                            <img src="images/vo-thi-sau.jpg" alt="Võ Thị Sáu" onerror="this.src='https://via.placeholder.com/180x180?text=Võ+Thị+Sáu'">
+                        </div>
+                        <div class="video-container">
+                            <video controls>
+                                <source src="${videoPaths.vothisau}" type="video/mp4">
+                                Trình duyệt của bạn không hỗ trợ video.
+                            </video>
+                            <div class="video-caption">
+                                <i class="fas fa-video"></i> ${videoCaptions.vothisau}
+                            </div>
+                        </div>
+                        <p><strong>Tiểu sử:</strong> Võ Thị Sáu sinh năm 1933 tại Đất Đỏ, Bà Rịa. Chị tham gia cách mạng năm 14 tuổi.</p>
+                        <div class="timeline-mini">
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">1933</div><div>Sinh ra tại Đất Đỏ</div></div>
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">1948</div><div>Tham gia cách mạng</div></div>
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">23/01/1952</div><div>Hy sinh tại Côn Đảo</div></div>
+                        </div>
+                        <h4>Thành tích:</h4>
+                        <p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Nữ anh hùng</span></p>
+                        <h4>Câu nói nổi tiếng:</h4>
+                        <p style="background:#f0f9ff;padding:15px;border-radius:8px">"Yêu nước chống Pháp không phải là tội!"</p>
+                    `
                 },
                 nguyenbangoc: {
-                    name: 'Nguyễn Bá Ngọc', subtitle: '(1953-1965)',
-                    content: `<div class="hero-portrait"><img src="images/nguyen-ba-ngoc.jpg" alt="Nguyễn Bá Ngọc" onerror="this.src='https://via.placeholder.com/180x180?text=Nguyễn+Bá+Ngọc'"></div>
-                    <p><strong>Tiểu sử:</strong> Nguyễn Bá Ngọc sinh năm 1953 tại Quảng Ninh. Năm 1965, em hy sinh khi cứu các em nhỏ trong trận bom Mỹ.</p>
-                    <div class="timeline-mini"><div class="timeline-mini-item"><div class="timeline-mini-date">1953</div><div>Sinh ra tại Quảng Ninh</div></div><div class="timeline-mini-item"><div class="timeline-mini-date">1965</div><div>Hy sinh cứu bạn</div></div></div>
-                    <h4>Thành tích:</h4><p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Tấm gương dũng cảm</span></p>`
+                    name: 'Nguyễn Bá Ngọc', 
+                    subtitle: '(1953-1965)',
+                    content: `
+                        <div class="hero-portrait">
+                            <img src="images/nguyen-ba-ngoc.jpg" alt="Nguyễn Bá Ngọc" onerror="this.src='https://via.placeholder.com/180x180?text=Nguyễn+Bá+Ngọc'">
+                        </div>
+                        <div class="video-container">
+                            <video controls>
+                                <source src="${videoPaths.nguyenbangoc}" type="video/mp4">
+                                Trình duyệt của bạn không hỗ trợ video.
+                            </video>
+                            <div class="video-caption">
+                                <i class="fas fa-video"></i> ${videoCaptions.nguyenbangoc}
+                            </div>
+                        </div>
+                        <p><strong>Tiểu sử:</strong> Nguyễn Bá Ngọc sinh năm 1953 tại Quảng Ninh. Năm 1965, em hy sinh khi cứu các em nhỏ trong trận bom Mỹ.</p>
+                        <div class="timeline-mini">
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">1953</div><div>Sinh ra tại Quảng Ninh</div></div>
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">1965</div><div>Hy sinh cứu bạn</div></div>
+                        </div>
+                        <h4>Thành tích:</h4>
+                        <p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Tấm gương dũng cảm</span></p>
+                        <h4>Bức thư của Bác Hồ:</h4>
+                        <p style="background:#f0f9ff;padding:15px;border-radius:8px">"Cháu Nguyễn Bá Ngọc yêu quý! Cháu là một tấm gương sáng về lòng dũng cảm và tinh thần hy sinh vì mọi người."</p>
+                    `
                 },
                 lytutrong: {
-                    name: 'Lý Tự Trọng', subtitle: '(1914-1931)',
-                    content: `<div class="hero-portrait"><img src="images/ly-tu-trong.jpg" alt="Lý Tự Trọng" onerror="this.src='https://via.placeholder.com/180x180?text=Lý+Tự+Trọng'"></div>
-                    <p><strong>Tiểu sử:</strong> Lý Tự Trọng tên thật là Lê Hữu Trọng, sinh năm 1914 tại Hà Tĩnh. Anh hy sinh khi mới 17 tuổi.</p>
-                    <h4>Câu nói bất hủ:</h4><p style="background:#f0f9ff;padding:15px;border-radius:8px">"Con đường của thanh niên chỉ là con đường cách mạng, không thể có con đường nào khác."</p>`
+                    name: 'Lý Tự Trọng', 
+                    subtitle: '(1914-1931)',
+                    content: `
+                        <div class="hero-portrait">
+                            <img src="images/ly-tu-trong.jpg" alt="Lý Tự Trọng" onerror="this.src='https://via.placeholder.com/180x180?text=Lý+Tự+Trọng'">
+                        </div>
+                        <div class="video-container">
+                            <video controls>
+                                <source src="${videoPaths.lytutrong}" type="video/mp4">
+                                Trình duyệt của bạn không hỗ trợ video.
+                            </video>
+                            <div class="video-caption">
+                                <i class="fas fa-video"></i> ${videoCaptions.lytutrong}
+                            </div>
+                        </div>
+                        <p><strong>Tiểu sử:</strong> Lý Tự Trọng tên thật là Lê Hữu Trọng, sinh năm 1914 tại Hà Tĩnh. Anh hy sinh khi mới 17 tuổi.</p>
+                        <div class="timeline-mini">
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">1914</div><div>Sinh ra tại Hà Tĩnh</div></div>
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">1928</div><div>Tham gia cách mạng</div></div>
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">20/11/1931</div><div>Hy sinh tại Sài Gòn</div></div>
+                        </div>
+                        <h4>Thành tích:</h4>
+                        <p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Chiến sĩ cộng sản</span></p>
+                        <h4>Câu nói bất hủ:</h4>
+                        <p style="background:#f0f9ff;padding:15px;border-radius:8px">"Con đường của thanh niên chỉ là con đường cách mạng, không thể có con đường nào khác."</p>
+                    `
                 },
                 nguyenvantroi: {
-                    name: 'Nguyễn Văn Trỗi', subtitle: '(1940-1964)',
-                    content: `<div class="hero-portrait"><img src="images/nguyen-van-troi.jpg" alt="Nguyễn Văn Trỗi" onerror="this.src='https://via.placeholder.com/180x180?text=Nguyễn+Văn+Trỗi'"></div>
-                    <p><strong>Tiểu sử:</strong> Nguyễn Văn Trỗi sinh năm 1940 tại Quảng Nam. Anh là chiến sĩ biệt động Sài Gòn.</p>
-                    <h4>Câu nói nổi tiếng:</h4><p style="background:#f0f9ff;padding:15px;border-radius:8px">"Tôi không có gì phải hối tiếc, chỉ tiếc là không còn được sống để chiến đấu thêm."</p>`
+                    name: 'Nguyễn Văn Trỗi', 
+                    subtitle: '(1940-1964)',
+                    content: `
+                        <div class="hero-portrait">
+                            <img src="images/nguyen-van-troi.jpg" alt="Nguyễn Văn Trỗi" onerror="this.src='https://via.placeholder.com/180x180?text=Nguyễn+Văn+Trỗi'">
+                        </div>
+                        <div class="video-container">
+                            <video controls>
+                                <source src="${videoPaths.nguyenvantroi}" type="video/mp4">
+                                Trình duyệt của bạn không hỗ trợ video.
+                            </video>
+                            <div class="video-caption">
+                                <i class="fas fa-video"></i> ${videoCaptions.nguyenvantroi}
+                            </div>
+                        </div>
+                        <p><strong>Tiểu sử:</strong> Nguyễn Văn Trỗi sinh năm 1940 tại Quảng Nam. Anh là chiến sĩ biệt động Sài Gòn.</p>
+                        <div class="timeline-mini">
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">1940</div><div>Sinh ra tại Quảng Nam</div></div>
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">1964</div><div>Tham gia Biệt động Sài Gòn</div></div>
+                            <div class="timeline-mini-item"><div class="timeline-mini-date">15/10/1964</div><div>Hy sinh tại Sài Gòn</div></div>
+                        </div>
+                        <h4>Thành tích:</h4>
+                        <p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Huân chương Hồ Chí Minh</span></p>
+                        <h4>Câu nói nổi tiếng:</h4>
+                        <p style="background:#f0f9ff;padding:15px;border-radius:8px">"Tôi không có gì phải hối tiếc, chỉ tiếc là không còn được sống để chiến đấu thêm vài năm nữa."</p>
+                    `
                 }
             };
             
@@ -942,7 +1117,7 @@
             const stories = {
                 1: { title: 'Buổi thành lập Đội', content: '<h4>Ngày 15/5/1941 - Một ngày lịch sử</h4><p>Trong khu rừng già thuộc thôn Nà Mạ, Cao Bằng, Đội Nhi đồng Cứu quốc được thành lập với 5 đội viên đầu tiên: Kim Đồng (12 tuổi), Cao Sơn (10 tuổi), Thanh Minh (10 tuổi), Thủy Tiên (9 tuổi), Thanh Thủy (8 tuổi).</p><p>Các em đã làm nhiệm vụ liên lạc, bảo vệ cán bộ, tham gia kháng chiến. Sự ra đời của Đội đánh dấu bước trưởng thành của phong trào thiếu nhi cách mạng Việt Nam.</p>' },
                 2: { title: '5 đội viên đầu tiên', content: '<h4>Những mầm non cách mạng</h4><p>Kim Đồng là đội trưởng, thường chuyển thư mật, dẫn đường cho cán bộ. Cao Sơn là em ruột Kim Đồng cũng tham gia liên lạc. Thanh Minh thông thạo đường rừng. Thủy Tiên và Thanh Thủy là hai chị em người dân tộc Nùng, làm nhiệm vụ đưa cơm và canh gác.</p>' },
-                3: { title: 'Kim Đồnghy sinh', content: '<h4>Người đội trưởng huyền thoại</h4><p>Ngày 15/2/1943, Kim Đồng phát hiện địch phục kích. Em đã đánh lạc hướng để cán bộ rút lui an toàn và hy sinh bên bờ suối Lê Nin khi mới 14 tuổi. Bác Hồ viết: "Kim Đồng là người đội viên đầu tiên của Đội ta. Tên tuổi cháu mãi mãi sáng ngời trong lịch sử Đội."</p>' },
+                3: { title: 'Kim Đồng hy sinh', content: '<h4>Người đội trưởng huyền thoại</h4><p>Ngày 15/2/1943, Kim Đồng phát hiện địch phục kích. Em đã đánh lạc hướng để cán bộ rút lui an toàn và hy sinh bên bờ suối Lê Nin khi mới 14 tuổi. Bác Hồ viết: "Kim Đồng là người đội viên đầu tiên của Đội ta. Tên tuổi cháu mãi mãi sáng ngời trong lịch sử Đội."</p>' },
                 4: { title: 'Lê Văn Tám', content: '<h4>Dũng sĩ đốt kho xăng Thị Nghè</h4><p>Ngày 15/10/1947, Lê Văn Tám tẩm xăng vào người, giả làm người bán rau vào gần kho xăng và châm lửa. Em đã hy sinh để phá hủy kho xăng của giặc Pháp, góp phần làm suy yếu hậu cần của địch.</p>' },
                 5: { title: 'Võ Thị Sáu', content: '<h4>Người con gái Đất Đỏ kiên trung</h4><p>Trước tòa án thực dân, chị Võ Thị Sáu hiên ngang: "Yêu nước chống Pháp không phải là tội!" Trước pháp trường, chị hát vang Quốc tế ca và hô "Việt Nam độc lập muôn năm!" khi mới 19 tuổi.</p>' },
                 6: { title: 'Nguyễn Bá Ngọc', content: '<h4>Tấm gương hy sinh cứu bạn</h4><p>Trong trận bom Mỹ, Nguyễn Bá Ngọc đã lao ra che chắn, cứu hai em nhỏ và hy sinh. Bác Hồ viết thư: "Cháu là tấm gương sáng về lòng dũng cảm và tinh thần hy sinh vì mọi người."</p>' },
