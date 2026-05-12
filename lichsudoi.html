@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Open Sans', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
             color: #333;
             line-height: 1.6;
         }
@@ -27,32 +27,35 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #6DD5ED, #2193B0);
-            color: white;
+            background: linear-gradient(135deg, #E8201F, #C40201);
+            color: #FFD700;
             padding: 40px 20px;
             text-align: center;
             border-radius: 15px;
             margin-bottom: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid #FFD700;
         }
 
         .header h1 {
             font-family: 'Montserrat', sans-serif;
             font-size: 2.5em;
             margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .header p {
             font-size: 1.2em;
-            opacity: 0.9;
+            opacity: 0.95;
+            color: #FFD700;
         }
 
         .back-btn {
             display: inline-block;
             margin-top: 20px;
             padding: 10px 30px;
-            background: white;
-            color: #2193B0;
+            background: #FFD700;
+            color: #C40201;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
@@ -62,6 +65,7 @@
         .back-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: #FFC107;
         }
 
         .tab-container {
@@ -78,21 +82,25 @@
             border: none;
             border-radius: 50px;
             background: white;
-            color: #2193B0;
+            color: #C40201;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             font-weight: 600;
+            border: 1px solid #C40201;
         }
 
         .tab-btn.active {
-            background: linear-gradient(135deg, #6DD5ED, #2193B0);
-            color: white;
+            background: linear-gradient(135deg, #E8201F, #C40201);
+            color: #FFD700;
+            border: 1px solid #FFD700;
         }
 
         .tab-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            background: #C40201;
+            color: #FFD700;
         }
 
         .tab-content {
@@ -105,10 +113,11 @@
 
         .section-title {
             text-align: center;
-            color: #2193B0;
+            color: #C40201;
             font-size: 2em;
             margin-bottom: 30px;
             font-family: 'Montserrat', sans-serif;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         /* Timeline Styles */
@@ -126,7 +135,7 @@
             transform: translateX(-50%);
             width: 4px;
             height: 100%;
-            background: linear-gradient(180deg, #6DD5ED, #2193B0);
+            background: linear-gradient(180deg, #E8201F, #FFD700);
             border-radius: 2px;
         }
 
@@ -151,9 +160,9 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background: #2193B0;
+            background: #FFD700;
             border: 4px solid white;
-            box-shadow: 0 0 0 2px #2193B0;
+            box-shadow: 0 0 0 2px #E8201F;
             z-index: 2;
         }
 
@@ -164,6 +173,7 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             position: relative;
             transition: transform 0.3s ease;
+            border-left: 5px solid #E8201F;
         }
 
         .timeline-content:hover {
@@ -179,7 +189,7 @@
         }
 
         .timeline-content h3 {
-            color: #2193B0;
+            color: #C40201;
             font-size: 1.5rem;
             margin-bottom: 5px;
         }
@@ -210,16 +220,18 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 1px solid #FFD700;
         }
 
         .hero-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #C40201;
         }
 
         .hero-image {
             height: 250px;
-            background: linear-gradient(135deg, #6DD5ED, #2193B0);
+            background: linear-gradient(135deg, #E8201F, #C40201);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -240,7 +252,7 @@
 
         .hero-image .no-image {
             font-size: 4em;
-            color: white;
+            color: #FFD700;
             text-align: center;
         }
 
@@ -249,7 +261,7 @@
         }
 
         .hero-info h3 {
-            color: #2193B0;
+            color: #C40201;
             font-size: 1.5em;
             margin-bottom: 5px;
         }
@@ -307,8 +319,8 @@
         }
 
         .modal-header {
-            background: linear-gradient(135deg, #6DD5ED, #2193B0);
-            color: white;
+            background: linear-gradient(135deg, #E8201F, #C40201);
+            color: #FFD700;
             padding: 20px 30px;
             border-radius: 15px 15px 0 0;
             position: relative;
@@ -321,7 +333,8 @@
 
         .modal-header .subtitle {
             font-size: 1.1em;
-            opacity: 0.9;
+            opacity: 0.95;
+            color: #FFD700;
         }
 
         .close-btn {
@@ -329,7 +342,7 @@
             top: 20px;
             right: 20px;
             background: rgba(255,255,255,0.2);
-            color: white;
+            color: #FFD700;
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -345,6 +358,7 @@
         .close-btn:hover {
             background: rgba(255,255,255,0.3);
             transform: rotate(90deg);
+            color: white;
         }
 
         .modal-body {
@@ -361,7 +375,7 @@
             height: 180px;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid #2193B0;
+            border: 4px solid #FFD700;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
 
@@ -372,6 +386,7 @@
             overflow: hidden;
             background: #000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid #FFD700;
         }
 
         .video-container video {
@@ -383,11 +398,11 @@
         }
 
         .video-caption {
-            background: #f0f9ff;
+            background: #C40201;
             padding: 8px;
             text-align: center;
             font-size: 0.9em;
-            color: #2193B0;
+            color: #FFD700;
         }
 
         .timeline-mini {
@@ -403,7 +418,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: #2193B0;
+            background: #C40201;
         }
 
         .timeline-mini-item {
@@ -419,22 +434,22 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: #2193B0;
+            background: #FFD700;
             border: 2px solid white;
-            box-shadow: 0 0 0 2px #2193B0;
+            box-shadow: 0 0 0 2px #C40201;
         }
 
         .timeline-mini-date {
             font-weight: 700;
-            color: #2193B0;
+            color: #C40201;
             margin-bottom: 5px;
         }
 
         .achievement-badge {
             display: inline-block;
             padding: 5px 15px;
-            background: linear-gradient(135deg, #FFC107, #FF8F00);
-            color: white;
+            background: linear-gradient(135deg, #E8201F, #C40201);
+            color: #FFD700;
             border-radius: 50px;
             font-size: 0.9em;
             margin-right: 10px;
@@ -456,16 +471,18 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 1px solid #FFD700;
         }
 
         .story-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #C40201;
         }
 
         .story-image {
             height: 200px;
-            background: linear-gradient(135deg, #6DD5ED, #2193B0);
+            background: linear-gradient(135deg, #E8201F, #C40201);
             position: relative;
             overflow: hidden;
             display: flex;
@@ -475,7 +492,7 @@
 
         .story-image i {
             font-size: 4em;
-            color: rgba(255,255,255,0.5);
+            color: #FFD700;
         }
 
         .story-content {
@@ -483,7 +500,7 @@
         }
 
         .story-content h3 {
-            color: #2193B0;
+            color: #C40201;
             font-size: 1.3em;
             margin-bottom: 15px;
         }
@@ -505,12 +522,12 @@
         }
 
         .story-meta i {
-            color: #2193B0;
+            color: #C40201;
             margin-right: 5px;
         }
 
         .read-more {
-            color: #2193B0;
+            color: #C40201;
             text-decoration: none;
             font-weight: 600;
             display: inline-flex;
@@ -520,15 +537,17 @@
 
         .read-more:hover {
             text-decoration: underline;
+            color: #E8201F;
         }
 
         .footer {
             text-align: center;
             margin-top: 50px;
             padding: 30px;
-            background: #2c3e50;
-            color: white;
+            background: #C40201;
+            color: #FFD700;
             border-radius: 15px;
+            border: 1px solid #FFD700;
         }
 
         @media (max-width: 768px) {
@@ -892,6 +911,7 @@
 
         <div class="footer">
             <p>&copy; 2026 - Lịch sử Đội TNTP Hồ Chí Minh</p>
+            <p>Phát triển bởi Ban Giáo dục Đội</p>
         </div>
     </div>
 
@@ -909,7 +929,6 @@
             const modalSubtitle = document.getElementById('modalHeroSubtitle');
             const modalBody = document.getElementById('modalBody');
             
-            // Video paths for each hero
             const videoPaths = {
                 kimdong: 'videos/kim-dong.mp4',
                 levantam: 'videos/le-van-tam.mp4',
@@ -919,7 +938,6 @@
                 nguyenvantroi: 'videos/nguyen-van-troi.mp4'
             };
             
-            // Video captions for each hero
             const videoCaptions = {
                 kimdong: 'Video về cuộc đời và sự nghiệp của Anh hùng Kim Đồng',
                 levantam: 'Video về chiến công của Anh hùng Lê Văn Tám',
@@ -957,7 +975,7 @@
                         <h4>Câu chuyện:</h4>
                         <p>Kim Đồng phát hiện địch phục kích, đã đánh lạc hướng để cán bộ rút lui an toàn và hy sinh khi mới 14 tuổi.</p>
                         <h4>Câu nói nổi tiếng:</h4>
-                        <p style="background:#f0f9ff;padding:15px;border-radius:8px">"Nếu các anh bảo vệ được cán bộ, thì dù có hy sinh, nhân dân và Đảng sẽ đời đời nhớ ơn."</p>
+                        <p style="background:#FFF5F5;padding:15px;border-radius:8px;border-left:4px solid #C40201">"Nếu các anh bảo vệ được cán bộ, thì dù có hy sinh, nhân dân và Đảng sẽ đời đời nhớ ơn."</p>
                     `
                 },
                 levantam: {
@@ -1013,7 +1031,7 @@
                         <h4>Thành tích:</h4>
                         <p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Nữ anh hùng</span></p>
                         <h4>Câu nói nổi tiếng:</h4>
-                        <p style="background:#f0f9ff;padding:15px;border-radius:8px">"Yêu nước chống Pháp không phải là tội!"</p>
+                        <p style="background:#FFF5F5;padding:15px;border-radius:8px;border-left:4px solid #C40201">"Yêu nước chống Pháp không phải là tội!"</p>
                     `
                 },
                 nguyenbangoc: {
@@ -1040,7 +1058,7 @@
                         <h4>Thành tích:</h4>
                         <p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Tấm gương dũng cảm</span></p>
                         <h4>Bức thư của Bác Hồ:</h4>
-                        <p style="background:#f0f9ff;padding:15px;border-radius:8px">"Cháu Nguyễn Bá Ngọc yêu quý! Cháu là một tấm gương sáng về lòng dũng cảm và tinh thần hy sinh vì mọi người."</p>
+                        <p style="background:#FFF5F5;padding:15px;border-radius:8px;border-left:4px solid #C40201">"Cháu Nguyễn Bá Ngọc yêu quý! Cháu là một tấm gương sáng về lòng dũng cảm và tinh thần hy sinh vì mọi người."</p>
                     `
                 },
                 lytutrong: {
@@ -1068,7 +1086,7 @@
                         <h4>Thành tích:</h4>
                         <p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Chiến sĩ cộng sản</span></p>
                         <h4>Câu nói bất hủ:</h4>
-                        <p style="background:#f0f9ff;padding:15px;border-radius:8px">"Con đường của thanh niên chỉ là con đường cách mạng, không thể có con đường nào khác."</p>
+                        <p style="background:#FFF5F5;padding:15px;border-radius:8px;border-left:4px solid #C40201">"Con đường của thanh niên chỉ là con đường cách mạng, không thể có con đường nào khác."</p>
                     `
                 },
                 nguyenvantroi: {
@@ -1096,7 +1114,7 @@
                         <h4>Thành tích:</h4>
                         <p><span class="achievement-badge">Anh hùng LLVT</span><span class="achievement-badge">Huân chương Hồ Chí Minh</span></p>
                         <h4>Câu nói nổi tiếng:</h4>
-                        <p style="background:#f0f9ff;padding:15px;border-radius:8px">"Tôi không có gì phải hối tiếc, chỉ tiếc là không còn được sống để chiến đấu thêm vài năm nữa."</p>
+                        <p style="background:#FFF5F5;padding:15px;border-radius:8px;border-left:4px solid #C40201">"Tôi không có gì phải hối tiếc, chỉ tiếc là không còn được sống để chiến đấu thêm vài năm nữa."</p>
                     `
                 }
             };
