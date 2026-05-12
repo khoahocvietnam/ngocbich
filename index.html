@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary-gradient: linear-gradient(135deg, #6DD5ED, #2193B0);
-            --secondary-gradient: linear-gradient(135deg, #FFC107, #FF8F00);
+            --red-gradient: linear-gradient(135deg, #E8201F, #C40201);
+            --yellow-gradient: linear-gradient(135deg, #FFD700, #FFC107);
             --text-dark: #2c3e50;
-            --text-light: #ecf0f1;
-            --bg-light: #fefefe;
+            --text-light: #fefefe;
+            --bg-light: #fff5f5;
             --card-bg: #ffffff;
             --shadow-subtle: rgba(0, 0, 0, 0.08);
             --shadow-strong: rgba(0, 0, 0, 0.15);
@@ -69,8 +69,8 @@
         }
 
         .hero-section {
-            background: var(--primary-gradient);
-            color: var(--text-light);
+            background: var(--red-gradient);
+            color: #FFD700;
             padding: 80px 20px;
             position: relative;
             overflow: hidden;
@@ -84,7 +84,7 @@
             left: 0;
             width: 100%;
             height: 100px;
-            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23fefefe" fill-opacity="1" d="M0,64L48,53.3C96,43,192,21,288,26.7C384,32,480,64,576,64C672,64,768,32,864,21.3C960,11,1056,21,1152,32C1248,43,1344,53,1392,58.7L1440,64L1440,100L1392,100C1344,100,1248,100,1152,100C1056,100,960,100,864,100C768,100,672,100,576,100C480,100,384,100,288,100C192,100,96,100,48,100L0,100Z"></path></svg>') no-repeat bottom center;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg"><path fill="%23fff5f5" fill-opacity="1" d="M0,64L48,53.3C96,43,192,21,288,26.7C384,32,480,64,576,64C672,64,768,32,864,21.3C960,11,1056,21,1152,32C1248,43,1344,53,1392,58.7L1440,64L1440,100L1392,100C1344,100,1248,100,1152,100C1056,100,960,100,864,100C768,100,672,100,576,100C480,100,384,100,288,100C192,100,96,100,48,100L0,100Z"></path></svg>') no-repeat bottom center;
             background-size: cover;
             transform: translateY(1px);
         }
@@ -102,22 +102,24 @@
             margin-bottom: 15px;
             letter-spacing: 1.5px;
             font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero-content p {
             font-size: 1.3em;
-            opacity: 0.9;
+            opacity: 0.95;
             margin-bottom: 40px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            color: #FFD700;
         }
 
         .main-content {
             max-width: 1200px;
             margin: -50px auto 50px auto;
             padding: 30px;
-            background-color: var(--bg-light);
+            background-color: var(--card-bg);
             border-radius: 15px;
             box-shadow: 0 10px 30px var(--shadow-subtle);
             position: relative;
@@ -127,7 +129,7 @@
         .section-title {
             font-family: 'Montserrat', sans-serif;
             font-size: 2.5em;
-            color: var(--text-dark);
+            color: #C40201;
             margin-bottom: 40px;
             position: relative;
             display: inline-block;
@@ -138,7 +140,7 @@
             display: block;
             width: 80px;
             height: 4px;
-            background: var(--primary-gradient);
+            background: var(--red-gradient);
             margin: 10px auto 0;
             border-radius: 2px;
         }
@@ -162,25 +164,26 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border: 1px solid #e0e0e0;
+            border: 1px solid #FFD700;
         }
 
         .feature-card:hover {
             transform: translateY(-12px) scale(1.02);
             box-shadow: 0 15px 40px var(--shadow-strong);
+            border-color: #C40201;
         }
 
         .feature-card i {
             font-size: 3.5em;
             margin-bottom: 25px;
-            background: var(--primary-gradient);
+            background: var(--red-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: block;
         }
         
         .feature-card:nth-child(even) i {
-            background: var(--secondary-gradient);
+            background: var(--yellow-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -190,7 +193,7 @@
             font-size: 1.8em;
             margin-bottom: 15px;
             font-weight: 600;
-            color: var(--text-dark);
+            color: #C40201;
         }
 
         .feature-card p {
@@ -203,8 +206,8 @@
             margin-top: 60px;
             padding: 30px 20px;
             font-size: 0.95em;
-            color: var(--text-light);
-            background: var(--text-dark);
+            background: #C40201;
+            color: #FFD700;
             box-shadow: 0 -4px 15px var(--shadow-subtle);
         }
 
@@ -307,7 +310,7 @@
 
     <div class="footer">
         <p>&copy; 2026 - Lịch sử & Trắc nghiệm Đội TNTP Hồ Chí Minh</p>
-        <p>&copy; Trường Tiểu học Minh Tân</p>
+        <p>Trường Tiểu học Minh Tân - Xã Yên Lạc, Tỉnh Phú Thọ</p>
     </div>
 </body>
 </html>
