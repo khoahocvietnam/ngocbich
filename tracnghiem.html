@@ -31,6 +31,7 @@
         .btn-secondary { background: #6c757d; color: white; }
         .btn-danger { background: linear-gradient(135deg, #dc3545, #c82333); color: white; }
         .btn-warning { background: linear-gradient(135deg, #FFD700, #FFC107); color: #C40201; }
+        .btn-info { background: linear-gradient(135deg, #17a2b8, #138496); color: white; }
         .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .quiz-stats { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; background: #fff5f5; padding: 15px; border-radius: 10px; }
         .stats-group { display: flex; gap: 25px; }
@@ -58,12 +59,19 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .result-item { display: flex; justify-content: space-between; padding: 12px; border-bottom: 1px solid #dee2e6; }
         .result-stats { max-width: 400px; margin: 0 auto; background: #fff5f5; padding: 20px; border-radius: 10px; }
-        .question-list { max-height: 400px; overflow-y: auto; }
-        .question-item { background: #f8f9fa; padding: 10px; margin-bottom: 8px; border-radius: 8px; border-left: 3px solid #E8201F; }
+        .review-list { max-height: 500px; overflow-y: auto; margin-top: 20px; }
+        .review-question-item { background: #f8f9fa; padding: 15px; margin-bottom: 10px; border-radius: 10px; border-left: 5px solid #E8201F; cursor: pointer; transition: 0.2s; }
+        .review-question-item:hover { transform: translateX(5px); background: #fff0f0; }
+        .review-question-text { font-weight: 600; margin-bottom: 8px; }
+        .review-answer-status { font-size: 0.85em; margin-top: 5px; }
+        .review-correct { color: #28a745; }
+        .review-wrong { color: #dc3545; }
+        .review-answer-detail { font-size: 0.9em; margin-top: 5px; color: #495057; }
         @media (max-width: 768px) { .quiz-stats { flex-direction: column; } .stats-group { width: 100%; justify-content: space-around; } .progress-bar { width: 100%; } .quiz-controls { flex-direction: column; } .btn { width: 100%; justify-content: center; } }
         .footer { text-align: center; margin-top: 30px; padding: 15px; color: #C40201; font-size: 0.85em; background: #fff5f5; border-radius: 10px; }
         .api-notice { background: #fff5f5; border-left: 4px solid #C40201; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9em; }
         .correct-answer-notice { background: #d4edda; color: #155724; padding: 10px; border-radius: 8px; margin-top: 15px; text-align: center; }
+        .back-to-list { margin-bottom: 15px; }
     </style>
 </head>
 <body>
@@ -160,9 +168,10 @@
         <div class="result-stats" id="result-stats"></div>
         <div id="result-message" style="text-align:center; padding:20px"></div>
         <div style="display: flex; gap: 10px; justify-content: center;">
-            <button class="btn btn-primary" onclick="reviewAnswers()"><i class="fas fa-eye"></i> Xem lại</button>
+            <button class="btn btn-info" onclick="showReviewList()"><i class="fas fa-eye"></i> Xem lại tất cả câu hỏi</button>
             <button class="btn btn-success" onclick="resetQuiz()"><i class="fas fa-play"></i> Làm mới</button>
         </div>
+        <div id="review-list-container" style="margin-top: 20px;"></div>
     </div>
 
     <div class="footer">
@@ -210,6 +219,7 @@
         updateStats();
         document.getElementById('submit-btn').style.display = 'none';
         document.getElementById('result-tab-btn').style.display = 'none';
+        document.getElementById('review-list-container').innerHTML = ''; // Xóa danh sách xem lại cũ
     }
 
     function renderCurrentQuestion() {
@@ -310,10 +320,51 @@
             <div class="result-item"><span>Điểm:</span><span style="color:#C40201;font-weight:700">${correct*10}</span></div>
             <div class="result-item"><span>Tỷ lệ:</span><span style="color:#C40201;font-weight:700">${percent}%</span></div>`;
         document.getElementById('result-message').innerHTML = `<div style="font-size:1.2em; font-weight:600;">${msg}</div>`;
+        // Tự động hiển thị danh sách xem lại khi vào tab kết quả
+        showReviewList();
     }
     
-    function reviewAnswers() { switchTab('quiz'); }
-
+    // Hàm xem lại đầy đủ tất cả các câu hỏi
+    function showReviewList() {
+        if (!questions.length) return;
+        let reviewHtml = `<div class="back-to-list"><button class="btn btn-secondary" onclick="switchTab('quiz')"><i class="fas fa-arrow-left"></i> Quay lại làm bài</button></div>`;
+        reviewHtml += `<h4 style="margin: 15px 0 10px 0;"><i class="fas fa-list-ul"></i> DANH SÁCH CÂU HỎI (Click vào từng câu để xem chi tiết)</h4>`;
+        reviewHtml += `<div class="review-list">`;
+        
+        questions.forEach((q, idx) => {
+            const userAns = userAnswers[idx];
+            const isCorrect = (userAns === q.correct);
+            const statusIcon = userAns === null ? '❓ Chưa trả lời' : (isCorrect ? '✅ Đúng' : '❌ Sai');
+            const statusClass = userAns === null ? '' : (isCorrect ? 'review-correct' : 'review-wrong');
+            
+            reviewHtml += `
+                <div class="review-question-item" onclick="viewQuestionDetail(${idx})">
+                    <div class="review-question-text"><strong>Câu ${idx+1}:</strong> ${q.question.substring(0, 100)}${q.question.length > 100 ? '...' : ''}</div>
+                    <div class="review-answer-status ${statusClass}">${statusIcon}</div>
+                    <div class="review-answer-detail">
+                        ${userAns !== null ? `Bạn chọn: ${q.options[userAns]}` : 'Bạn chưa trả lời câu này'}
+                        <br><span style="color:#28a745;">Đáp án đúng: ${q.options[q.correct]}</span>
+                    </div>
+                </div>
+            `;
+        });
+        reviewHtml += `</div>`;
+        document.getElementById('review-list-container').innerHTML = reviewHtml;
+    }
+    
+    // Xem chi tiết một câu hỏi trong danh sách review (chuyển sang tab quiz và hiển thị câu đó)
+    function viewQuestionDetail(index) {
+        if (quizSubmitted) {
+            // Chuyển sang tab quiz để xem chi tiết câu hỏi
+            switchTab('quiz');
+            currentIndex = index;
+            renderCurrentQuestion();
+            // Cuộn lên đầu để xem rõ
+            document.getElementById('quiz-tab').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+    
+    // Các hàm còn lại giữ nguyên (AI, quản lý, import/export...)
     async function generateQuestions() {
         const topic = document.getElementById('topic').value;
         const difficulty = document.getElementById('difficulty').value;
