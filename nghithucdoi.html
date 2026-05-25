@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nghi thức Đội TNTP Hồ Chí Minh | Hướng dẫn bằng video</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red-main: #E8201F;
+            --red-dark: #C40201;
+            --gold: #FFD700;
+            --text-dark: #2c3e50;
+            --bg-light: #fff5f5;
+            --card-bg: #ffffff;
+            --shadow-sm: 0 5px 20px rgba(0,0,0,0.08);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* Logo quay về trang chủ */
+        .school-logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+        .school-logo:hover { transform: scale(1.05); }
+        .school-logo img {
+            height: 70px;
+            width: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            background: white;
+            padding: 6px;
+            object-fit: contain;
+        }
+
+        /* Hero section */
+        .hero-nghithuc {
+            background: linear-gradient(135deg, #1e3c2c, #C40201);
+            color: var(--gold);
+            padding: 100px 20px 80px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .hero-nghithuc h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        }
+        .hero-nghithuc p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #FFE484;
+        }
+
+        /* Main content */
+        .container {
+            max-width: 1300px;
+            margin: -40px auto 60px auto;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: var(--red-dark);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red-main), var(--gold));
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Grid video */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #ffe0b5;
+        }
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--gold);
+        }
+
+        .video-thumb {
+            background: #2c3e50;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: white;
+        }
+        .video-thumb i {
+            font-size: 4rem;
+            color: var(--gold);
+            transition: 0.2s;
+        }
+        .video-card:hover .video-thumb i {
+            transform: scale(1.1);
+            color: #fff;
+            text-shadow: 0 0 8px var(--gold);
+        }
+        .video-info {
+            padding: 18px;
+            text-align: left;
+        }
+        .video-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--red-dark);
+        }
+        .video-info p {
+            font-size: 0.85rem;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .badge {
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        /* Modal xem video */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: #000;
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 2px solid var(--gold);
+        }
+        .modal-content video {
+            width: 100%;
+            max-height: 80vh;
+            display: block;
+        }
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .close-modal:hover {
+            color: var(--gold);
+            transform: scale(1.1);
+        }
+        .modal-title {
+            position: absolute;
+            bottom: -45px;
+            left: 0;
+            color: white;
+            background: rgba(0,0,0,0.6);
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: var(--red-dark);
+            color: var(--gold);
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .hero-nghithuc h1 { font-size: 2.2rem; }
+            .video-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="index.html" class="school-logo">
+    <img src="logo-minhtam.jpg" alt="Logo trường">
+</a>
+
+<div class="hero-nghithuc">
+    <h1><i class="fas fa-flag-checkered"></i> NGHI THỨC ĐỘI TNTP HỒ CHÍ MINH</h1>
+    <p>Hướng dẫn chi tiết các động tác: thắt khăn, chào, quay, dậm chân, tiến lùi... Quan sát và luyện tập theo video</p>
+</div>
+
+<div class="container">
+    <h2 class="section-title">📹 Thư viện video nghi thức Đội</h2>
+    <div class="video-grid" id="videoGrid"></div>
+</div>
+
+<footer>
+    <p>&copy; 2026 - Nghi thức Đội TNTP Hồ Chí Minh | Trường Tiểu học Minh Tâm - Phú Thọ</p>
+    <p><i class="fas fa-video"></i> Nhấn vào từng video để xem hướng dẫn chi tiết</p>
+</footer>
+
+<!-- Modal xem video -->
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <button class="close-modal" id="closeModalBtn">&times;</button>
+        <video id="modalVideo" controls autoplay>
+            <source src="" type="video/mp4">
+            Trình duyệt không hỗ trợ video.
+        </video>
+        <div class="modal-title" id="modalVideoTitle"></div>
+    </div>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // DANH SÁCH VIDEO (DỰA THEO TÊN FILE BẠN ĐÃ CUNG CẤP)
+    // LƯU Ý: Đường dẫn video = "videos/" + tên_file.mp4
+    // Bạn cần tạo thư mục "videos" và copy toàn bộ file .mp4 vào đó
+    // Nếu video nằm ở nơi khác thì sửa lại đường dẫn bên dưới.
+    // --------------------------------------------------------------
+    const videoList = [
+        { name: "1. Động tác thắt khăn quàng đỏ", file: "1. Động tác thắt khăn quảng đỏ.mp4", duration: "01:19", quality: "HD" },
+        { name: "2. Động tác tháo khăn quàng đỏ", file: "2. Động tác tháo khăn quảng đỏ.mp4", duration: "00:31", quality: "HD" },
+        { name: "3. Động tác Chào kiểu Đội viên", file: "3. Động tác Chào kiểu Đối viên Đội TNTP ....mp4", duration: "00:58", quality: "HD" },
+        { name: "4. Động tác Đứng Nghỉ - Nghiêm", file: "4. Động tác Đứng Nghỉ Nghiệm.mp4", duration: "00:50", quality: "SD" },
+        { name: "5. Động tác Quay bên trái", file: "5. Động tác Quay bên trái.mp4", duration: "00:25", quality: "HD" },
+        { name: "6. Động tác Quay bên phải", file: "6. Động tác Quay bên phải.mp4", duration: "00:25", quality: "HD" },
+        { name: "7. Động tác Dậm chân tại chỗ", file: "8. Động tác Dặm chân tại chỗ.mp4", duration: "01:06", quality: "HD" },
+        { name: "8. Động tác Chạy tại chỗ", file: "9. Động tác Chạy tại chỗ.mp4", duration: "00:49", quality: "HD" },
+        { name: "9. Động tác Tiến", file: "10. Động tác Tiến.mp4", duration: "00:25", quality: "HD" },
+        { name: "10. Động tác Lùi", file: "11. Động tác Lùi.mp4", duration: "00:26", quality: "HD" },
+        { name: "11. Động tác Bước sang trái", file: "12. Động tác Bước sang trái.mp4", duration: "00:30", quality: "HD" }
+    ];
+
+    // Hàm render danh sách video ra giao diện
+    function renderVideoList() {
+        const grid = document.getElementById("videoGrid");
+        if (!grid) return;
+        grid.innerHTML = "";
+        videoList.forEach((video, index) => {
+            const card = document.createElement("div");
+            card.className = "video-card";
+            // Gắn sự kiện click để mở modal
+            card.addEventListener("click", () => openVideoModal(video));
+
+            // Phần thumbnail (icon play)
+            const thumbDiv = document.createElement("div");
+            thumbDiv.className = "video-thumb";
+            thumbDiv.innerHTML = `<i class="fas fa-play-circle"></i>`;
+
+            // Phần thông tin
+            const infoDiv = document.createElement("div");
+            infoDiv.className = "video-info";
+            infoDiv.innerHTML = `
+                <h3>${video.name}</h3>
+                <p>
+                    <span class="badge"><i class="far fa-clock"></i> ${video.duration}</span>
+                    <span class="badge"><i class="fas fa-video"></i> ${video.quality}</span>
+                </p>
+            `;
+
+            card.appendChild(thumbDiv);
+            card.appendChild(infoDiv);
+            grid.appendChild(card);
+        });
+    }
+
+    // Mở modal và phát video
+    function openVideoModal(video) {
+        const modal = document.getElementById("videoModal");
+        const videoElement = document.getElementById("modalVideo");
+        const titleElement = document.getElementById("modalVideoTitle");
+        
+        // Đường dẫn: thư mục videos/ + tên file (cần encodeURI để xử lý tiếng Việt và khoảng trắng)
+        const videoPath = `videos/${encodeURI(video.file)}`;
+        videoElement.src = videoPath;
+        videoElement.load();
+        titleElement.innerText = video.name;
+        
+        // Hiển thị modal
+        modal.style.display = "flex";
+        
+        // Tự động phát (autoplay đã có trong thẻ video)
+        videoElement.play().catch(err => {
+            console.log("Tự động phát bị chặn, người dùng cần click play:", err);
+        });
+    }
+
+    // Đóng modal
+    function closeModal() {
+        const modal = document.getElementById("videoModal");
+        const videoElement = document.getElementById("modalVideo");
+        if (modal) {
+            modal.style.display = "none";
+            videoElement.pause();
+            videoElement.src = ""; // giải phóng tài nguyên
+        }
+    }
+
+    // Sự kiện khi DOM tải xong
+    document.addEventListener("DOMContentLoaded", () => {
+        renderVideoList();
+        
+        // Gán sự kiện đóng modal
+        const modal = document.getElementById("videoModal");
+        const closeBtn = document.getElementById("closeModalBtn");
+        if (closeBtn) {
+            closeBtn.addEventListener("click", closeModal);
+        }
+        // Click ra ngoài nền đen cũng đóng modal
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
