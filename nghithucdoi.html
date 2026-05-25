@@ -31,7 +31,6 @@
             line-height: 1.7;
         }
 
-        /* Logo quay về trang chủ */
         .school-logo {
             position: absolute;
             top: 20px;
@@ -51,7 +50,6 @@
             object-fit: contain;
         }
 
-        /* Hero section */
         .hero-nghithuc {
             background: linear-gradient(135deg, #1e3c2c, #C40201);
             color: var(--gold);
@@ -61,18 +59,17 @@
         }
         .hero-nghithuc h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
         }
         .hero-nghithuc p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto;
             color: #FFE484;
         }
 
-        /* Main content */
         .container {
             max-width: 1300px;
             margin: -40px auto 60px auto;
@@ -86,7 +83,7 @@
 
         .section-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: var(--red-dark);
             text-align: center;
             margin-bottom: 40px;
@@ -102,7 +99,6 @@
             border-radius: 2px;
         }
 
-        /* Grid video */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -132,7 +128,6 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            color: white;
         }
         .video-thumb i {
             font-size: 4rem;
@@ -150,7 +145,7 @@
         }
         .video-info h3 {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 8px;
             color: var(--red-dark);
         }
@@ -168,8 +163,11 @@
             border-radius: 20px;
             font-size: 0.75rem;
         }
+        .error-badge {
+            background: #ffdddd;
+            color: #c40201;
+        }
 
-        /* Modal xem video */
         .modal {
             display: none;
             position: fixed;
@@ -207,11 +205,9 @@
             font-size: 2rem;
             color: white;
             cursor: pointer;
-            transition: 0.2s;
         }
         .close-modal:hover {
             color: var(--gold);
-            transform: scale(1.1);
         }
         .modal-title {
             position: absolute;
@@ -233,7 +229,7 @@
         }
 
         @media (max-width: 700px) {
-            .hero-nghithuc h1 { font-size: 2.2rem; }
+            .hero-nghithuc h1 { font-size: 1.8rem; }
             .video-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -259,7 +255,6 @@
     <p><i class="fas fa-video"></i> Nhấn vào từng video để xem hướng dẫn chi tiết</p>
 </footer>
 
-<!-- Modal xem video -->
 <div id="videoModal" class="modal">
     <div class="modal-content">
         <button class="close-modal" id="closeModalBtn">&times;</button>
@@ -272,51 +267,50 @@
 </div>
 
 <script>
-    // --------------------------------------------------------------
-    // DANH SÁCH VIDEO (DỰA THEO TÊN FILE BẠN ĐÃ CUNG CẤP)
-    // LƯU Ý: Đường dẫn video = "videos/" + tên_file.mp4
-    // Bạn cần tạo thư mục "videos" và copy toàn bộ file .mp4 vào đó
-    // Nếu video nằm ở nơi khác thì sửa lại đường dẫn bên dưới.
-    // --------------------------------------------------------------
+    // =============================================================
+    // DANH SÁCH VIDEO - CẬP NHẬT ĐÚNG THEO TÊN FILE TỪ ẢNH CỦA BẠN
+    // =============================================================
     const videoList = [
-        { name: "1. Động tác thắt khăn quàng đỏ", file: "1. Động tác thắt khăn quảng đỏ.mp4", duration: "01:19", quality: "HD" },
-        { name: "2. Động tác tháo khăn quàng đỏ", file: "2. Động tác tháo khăn quảng đỏ.mp4", duration: "00:31", quality: "HD" },
-        { name: "3. Động tác Chào kiểu Đội viên", file: "3. Động tác Chào kiểu Đối viên Đội TNTP ....mp4", duration: "00:58", quality: "HD" },
-        { name: "4. Động tác Đứng Nghỉ - Nghiêm", file: "4. Động tác Đứng Nghỉ Nghiệm.mp4", duration: "00:50", quality: "SD" },
-        { name: "5. Động tác Quay bên trái", file: "5. Động tác Quay bên trái.mp4", duration: "00:25", quality: "HD" },
-        { name: "6. Động tác Quay bên phải", file: "6. Động tác Quay bên phải.mp4", duration: "00:25", quality: "HD" },
-        { name: "7. Động tác Dậm chân tại chỗ", file: "8. Động tác Dặm chân tại chỗ.mp4", duration: "01:06", quality: "HD" },
-        { name: "8. Động tác Chạy tại chỗ", file: "9. Động tác Chạy tại chỗ.mp4", duration: "00:49", quality: "HD" },
-        { name: "9. Động tác Tiến", file: "10. Động tác Tiến.mp4", duration: "00:25", quality: "HD" },
-        { name: "10. Động tác Lùi", file: "11. Động tác Lùi.mp4", duration: "00:26", quality: "HD" },
-        { name: "11. Động tác Bước sang trái", file: "12. Động tác Bước sang trái.mp4", duration: "00:30", quality: "HD" }
+        { name: "1. Động tác thắt khăn quàng đỏ", file: "1. Động tác thắt khăn quàng đỏ.mp4" },
+        { name: "2. Động tác tháo khăn quàng đỏ", file: "2. Động tác tháo khăn quàng đỏ.mp4" },
+        { name: "3. Động tác Chào kiểu Đội viên", file: "3. Động tác Chào kiểu Đội viên Đội TNTP Hồ Chí ...mp4" },
+        { name: "4. Động tác Đứng Nghỉ - Nghiêm", file: "4. Động tác Đứng Nghỉ Nghiêm.mp4" },
+        { name: "5. Động tác Quay bên trái", file: "5. Động tác Quay bên trái.mp4" },
+        { name: "6. Động tác Quay bên phải", file: "6. Động tác Quay bên phải.mp4" },
+        { name: "8. Động tác Dậm chân tại chỗ", file: "8. Động tác Dậm chân tại chỗ.mp4" },
+        { name: "9. Động tác Chạy tại chỗ", file: "9. Động tác Chạy tại chỗ.mp4" },
+        { name: "10. Động tác Tiến", file: "10. Động tác Tiến.mp4" },
+        { name: "11. Động tác Lùi", file: "11. Động tác Lùi.mp4" },
+        { name: "12. Động tác Bước sang trái", file: "12. Động tác Bước sang trái.mp4" },
+        { name: "13. Động tác Bước sang phải", file: "13. Động tác Bước sang phải.mp4" },
+        { name: "15. Động tác Chạy đều", file: "15. Động tác Chạy đều.mp4" },
+        { name: "Anh hùng Kim Đồng", file: "kim-dong.mp4" },
+        { name: "Anh hùng Lê Văn Tám", file: "le-van-tam.mp4" },
+        { name: "Anh hùng Lý Tự Trọng", file: "ly-tu-trong.mp4" },
+        { name: "Anh hùng Nguyễn Bá Ngọc", file: "nguyen-ba-ngoc.mp4" },
+        { name: "Anh hùng Nguyễn Văn Trỗi", file: "nguyen-van-troi.mp4" },
+        { name: "Chị Võ Thị Sáu", file: "vo-thi-sau.mp4" }
     ];
 
-    // Hàm render danh sách video ra giao diện
     function renderVideoList() {
         const grid = document.getElementById("videoGrid");
         if (!grid) return;
         grid.innerHTML = "";
+
         videoList.forEach((video, index) => {
             const card = document.createElement("div");
             card.className = "video-card";
-            // Gắn sự kiện click để mở modal
             card.addEventListener("click", () => openVideoModal(video));
 
-            // Phần thumbnail (icon play)
             const thumbDiv = document.createElement("div");
             thumbDiv.className = "video-thumb";
             thumbDiv.innerHTML = `<i class="fas fa-play-circle"></i>`;
 
-            // Phần thông tin
             const infoDiv = document.createElement("div");
             infoDiv.className = "video-info";
             infoDiv.innerHTML = `
                 <h3>${video.name}</h3>
-                <p>
-                    <span class="badge"><i class="far fa-clock"></i> ${video.duration}</span>
-                    <span class="badge"><i class="fas fa-video"></i> ${video.quality}</span>
-                </p>
+                <p><span class="badge"><i class="fas fa-file-video"></i> MP4</span></p>
             `;
 
             card.appendChild(thumbDiv);
@@ -325,49 +319,52 @@
         });
     }
 
-    // Mở modal và phát video
     function openVideoModal(video) {
         const modal = document.getElementById("videoModal");
         const videoElement = document.getElementById("modalVideo");
         const titleElement = document.getElementById("modalVideoTitle");
         
-        // Đường dẫn: thư mục videos/ + tên file (cần encodeURI để xử lý tiếng Việt và khoảng trắng)
+        // Đường dẫn: thư mục videos/ + tên file (dùng encodeURI để xử lý dấu cách, tiếng Việt)
         const videoPath = `videos/${encodeURI(video.file)}`;
-        videoElement.src = videoPath;
-        videoElement.load();
-        titleElement.innerText = video.name;
         
-        // Hiển thị modal
-        modal.style.display = "flex";
-        
-        // Tự động phát (autoplay đã có trong thẻ video)
-        videoElement.play().catch(err => {
-            console.log("Tự động phát bị chặn, người dùng cần click play:", err);
-        });
+        // Kiểm tra xem file có tồn tại không trước khi phát
+        fetch(videoPath, { method: 'HEAD' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`File không tồn tại: ${video.file}`);
+                }
+                // File tồn tại, tiến hành phát
+                videoElement.src = videoPath;
+                videoElement.load();
+                titleElement.innerText = video.name;
+                modal.style.display = "flex";
+                videoElement.play().catch(e => console.log("Autoplay bị chặn:", e));
+            })
+            .catch(error => {
+                // Hiển thị thông báo lỗi thân thiện
+                alert(`❌ Không thể tải video "${video.name}"\n\nLý do: ${error.message}\n\nHãy kiểm tra lại:\n1. File có trong thư mục "videos/" không?\n2. Tên file chính xác: "${video.file}"`);
+                console.error("Lỗi video:", error);
+            });
     }
 
-    // Đóng modal
     function closeModal() {
         const modal = document.getElementById("videoModal");
         const videoElement = document.getElementById("modalVideo");
         if (modal) {
             modal.style.display = "none";
             videoElement.pause();
-            videoElement.src = ""; // giải phóng tài nguyên
+            videoElement.src = "";
         }
     }
 
-    // Sự kiện khi DOM tải xong
     document.addEventListener("DOMContentLoaded", () => {
         renderVideoList();
         
-        // Gán sự kiện đóng modal
         const modal = document.getElementById("videoModal");
         const closeBtn = document.getElementById("closeModalBtn");
         if (closeBtn) {
             closeBtn.addEventListener("click", closeModal);
         }
-        // Click ra ngoài nền đen cũng đóng modal
         modal.addEventListener("click", (e) => {
             if (e.target === modal) {
                 closeModal();
