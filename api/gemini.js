@@ -48,7 +48,7 @@ Trả về CHỈ DUY NHẤT một mảng JSON, không có text giải thích hay
 Lưu ý: "correct" là chỉ số 0, 1, 2, 3 tương ứng với vị trí đáp án đúng trong mảng options (0 là A, 1 là B, 2 là C, 3 là D).`;
 
     try {
-        // Dùng model gemini-2.5-flash-lite (phiên bản mới, nhanh và nhẹ)
+        // Dùng model gemini-1.5-flash (phiên bản mới, nhanh và nhẹ)
         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${API_KEY}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -60,6 +60,7 @@ Lưu ý: "correct" là chỉ số 0, 1, 2, 3 tương ứng với vị trí đáp
                     temperature: 0.7,
                     maxOutputTokens: 2000,
                     topP: 0.9
+                    responseMimeType: "application/json" // Quan trọng: Yêu cầu API trả về JSON chuẩn
                 }
             })
         });
